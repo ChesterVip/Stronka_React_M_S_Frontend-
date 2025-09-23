@@ -569,7 +569,7 @@ export const translations: Record<Language, Translation> = {
     
     // Footer
     footer_quick_links: "Szybkie linki",
-    footer_copyright: "© 2024 Mariusz Sokołowski. Wszystkie prawa zastrzeżone.",
+    footer_copyright: "© 2025 Mariusz Sokołowski. Wszystkie prawa zastrzeżone.",
     
     // NotFound page
     notfound_need_help: "Potrzebujesz pomocy?",
@@ -1145,7 +1145,7 @@ export const translations: Record<Language, Translation> = {
     
     // Footer
     footer_quick_links: "Schnelle Links",
-    footer_copyright: "© 2024 Mariusz Sokołowski. Alle Rechte vorbehalten.",
+    footer_copyright: "© 2025 Mariusz Sokołowski. Alle Rechte vorbehalten.",
     
     // NotFound page
     notfound_need_help: "Brauchen Sie Hilfe?",

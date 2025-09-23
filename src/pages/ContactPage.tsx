@@ -72,6 +72,7 @@ const ContactPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [submitMessage, setSubmitMessage] = useState('')
+  const [isLoggedIn, setIsLoggedIn] = useState(false) // Mock - później będzie z systemu autoryzacji
   
   const {
     register,
@@ -140,31 +141,75 @@ const ContactPage = () => {
   const contactInfo = [
     {
       icon: 'fa-envelope',
+      iconClass: 'fas',
       label: t.email_label,
-      value: 'mariusz@msokolowski.dev',
-      link: 'mailto:mariusz@msokolowski.dev',
-      color: 'text-blue-400'
+      value: isLoggedIn ? 'mariusz.sokolowski@fgfalke.eu' : '***@***.***',
+      link: isLoggedIn ? 'mailto:mariusz.sokolowski@fgfalke.eu' : null,
+      color: 'text-blue-400',
+      requiresAuth: true
     },
     {
       icon: 'fa-phone',
+      iconClass: 'fas',
       label: t.phone_label,
-      value: '+41 xxx xxx xxx',
-      link: 'tel:+41xxxxxxxxx',
-      color: 'text-green-400'
+      value: isLoggedIn ? '+41 76 237 33 01' : '+41 *** *** ***',
+      link: isLoggedIn ? 'tel:+41762373301' : null,
+      color: 'text-green-400',
+      requiresAuth: true
     },
     {
-      icon: 'fa-map-marker-alt',
+      icon: 'fa-flag',
+      iconClass: 'fas',
       label: t.location_label,
-      value: 'Szwajcaria',
+      value: 'Schweiz',
       link: null,
-      color: 'text-red-400'
+      color: 'text-red-400',
+      requiresAuth: false
     },
     {
       icon: 'fa-linkedin',
+      iconClass: 'fab',
       label: 'LinkedIn',
-      value: 'linkedin.com/in/msokolowski',
-      link: 'https://linkedin.com/in/msokolowski',
-      color: 'text-blue-500'
+      value: 'LinkedIn Profile',
+      link: 'https://www.linkedin.com/in/mariuszsokolowski5014/',
+      color: 'text-blue-500',
+      requiresAuth: false
+    },
+    {
+      icon: 'fa-github',
+      iconClass: 'fab',
+      label: 'GitHub',
+      value: 'GitHub Profile',
+      link: 'https://github.com/ChesterVip',
+      color: 'text-gray-300',
+      requiresAuth: false
+    },
+    {
+      icon: 'fa-gitlab',
+      iconClass: 'fab',
+      label: 'GitLab',
+      value: 'GitLab Profile',
+      link: 'https://gitlab.com/ChesterVip',
+      color: 'text-orange-500',
+      requiresAuth: false
+    },
+    {
+      icon: 'fa-discord',
+      iconClass: 'fab',
+      label: 'Discord',
+      value: 'chestervip',
+      link: null,
+      color: 'text-indigo-400',
+      requiresAuth: false
+    },
+    {
+      icon: 'fa-facebook',
+      iconClass: 'fab',
+      label: 'Facebook',
+      value: 'Facebook Profile',
+      link: 'https://www.facebook.com/mariusz.sokolowski.94',
+      color: 'text-blue-600',
+      requiresAuth: false
     }
   ]
 
@@ -193,6 +238,15 @@ const ContactPage = () => {
             <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
               {t.contact_page_subtitle}
             </p>
+            {/* Temporary login button for testing */}
+            <div className="mt-4">
+              <button
+                onClick={() => setIsLoggedIn(!isLoggedIn)}
+                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+              >
+                {isLoggedIn ? 'Wyloguj się' : 'Zaloguj się'} (Test)
+              </button>
+            </div>
           </div>
         </AnimatedSection>
 
@@ -568,21 +622,26 @@ const ContactPage = () => {
                   {contactInfo.map((info, index) => (
                     <div key={index} className="flex items-center gap-4 p-3 bg-gray-800/50 rounded-lg hover:bg-gray-800/70 transition-colors">
                       <div className={`p-2 rounded-lg bg-gray-700 ${info.color}`}>
-                        <i className={`fas ${info.icon}`}></i>
+                        <i className={`${info.iconClass} ${info.icon}`}></i>
                       </div>
                       <div className="flex-1">
                         <div className="text-sm text-gray-400">{info.label}</div>
                         {info.link ? (
-                          <a 
-                            href={info.link} 
-                            className={`${info.color} hover:underline`}
-                            target={info.link.startsWith('http') ? '_blank' : undefined}
-                            rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                          <button 
+                            onClick={() => info.link && window.open(info.link, '_blank')}
+                            className={`${info.color} hover:underline cursor-pointer bg-transparent border-none p-0 text-left font-medium`}
+                            title={info.link}
                           >
                             {info.value}
-                          </a>
+                          </button>
                         ) : (
                           <div className="text-white">{info.value}</div>
+                        )}
+                        {info.requiresAuth && !isLoggedIn && (
+                          <div className="text-xs text-gray-500 mt-1">
+                            <i className="fas fa-lock mr-1"></i>
+                            Wymaga logowania
+                          </div>
                         )}
                       </div>
                     </div>

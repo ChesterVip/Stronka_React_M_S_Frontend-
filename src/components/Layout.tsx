@@ -193,19 +193,21 @@ const Layout = () => {
               <h4 className="text-lg font-semibold text-white mb-4">{t.find_online}</h4>
               <div className="flex space-x-4">
                 {[
-                  { icon: 'fa-envelope', href: 'mailto:contact@mariusz-sokolowski.com' },
-                  { icon: 'fa-linkedin', href: '#' },
-                  { icon: 'fa-github', href: '#' },
-                  { icon: 'fa-whatsapp', href: '#' }
-                ].map(({ icon, href }, index) => (
+                  { icon: 'fa-linkedin', href: 'https://www.linkedin.com/in/mariuszsokolowski5014/', label: 'LinkedIn' },
+                  { icon: 'fa-github', href: 'https://github.com/ChesterVip', label: 'GitHub' },
+                  { icon: 'fa-gitlab', href: 'https://gitlab.com/ChesterVip', label: 'GitLab' },
+                  { icon: 'fa-facebook', href: 'https://www.facebook.com/mariusz.sokolowski.94', label: 'Facebook' },
+                  { icon: 'fa-discord', href: '#', label: 'Discord' }
+                ].map(({ icon, href, label }, index) => (
                   <a
                     key={index}
                     href={href}
                     className="w-10 h-10 bg-gradient-to-br from-gold-500 to-gold-700 hover:from-gold-400 hover:to-gold-600 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
                     target="_blank"
                     rel="noopener noreferrer"
+                    title={label}
                   >
-                    <i className={cn("fas", icon, "text-black")} />
+                    <i className={cn("fab", icon, "text-black")} />
                   </a>
                 ))}
               </div>
