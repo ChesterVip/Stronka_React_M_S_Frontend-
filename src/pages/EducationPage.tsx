@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useLanguage } from '@/hooks/useLanguage'
 import { useNavigate } from 'react-router-dom'
 import AnimatedSection from '@/components/ui/AnimatedSection'
@@ -10,6 +10,41 @@ const EducationPage = () => {
   const { t } = useLanguage()
   const navigate = useNavigate()
   const [activeTab, setActiveTab] = useState<'formal' | 'certifications' | 'skills' | 'continuous'>('formal')
+  const [animatedStats, setAnimatedStats] = useState<{[key: string]: number}>({})
+
+  // Animation for counting stats
+  useEffect(() => {
+    const stats = t.education_learning_stats
+    const animationDuration = 2000 // 2 seconds
+    const steps = 60 // 60 steps for smooth animation
+    
+    stats.forEach((stat, index) => {
+      const numericValue = parseInt(stat.value.replace('+', ''))
+      if (!isNaN(numericValue)) {
+        const stepValue = numericValue / steps
+        const delay = index * 200 // stagger animations
+        let currentStep = 0
+        
+        const timer = setTimeout(() => {
+          const interval = setInterval(() => {
+            currentStep++
+            const currentValue = Math.min(Math.floor(stepValue * currentStep), numericValue)
+            
+            setAnimatedStats(prev => ({
+              ...prev,
+              [stat.label]: currentValue
+            }))
+            
+            if (currentStep >= steps) {
+              clearInterval(interval)
+            }
+          }, animationDuration / steps)
+        }, delay)
+        
+        return () => clearTimeout(timer)
+      }
+    })
+  }, [t.education_learning_stats])
 
   const formalEducation = [
     {
@@ -38,113 +73,35 @@ const EducationPage = () => {
     }
   ]
 
-  const certifications = [
-    {
-      name: 'Prawo jazdy kategorii CE',
-      issuer: 'WORD',
-      date: '2015',
-      valid: true,
-      icon: 'fa-id-card'
-    },
-    {
-      name: 'Karta kierowcy (tachograf cyfrowy)',
-      issuer: 'ITD',
-      date: '2015',
-      valid: true,
-      icon: 'fa-tachometer-alt'
-    },
-    {
-      name: 'ADR - transport towarów niebezpiecznych',
-      issuer: 'UDT',
-      date: '2018',
-      valid: true,
-      icon: 'fa-radiation'
-    },
-    {
-      name: 'Certyfikat BHP w transporcie',
-      issuer: 'CIOP-PIB',
-      date: '2020',
-      valid: true,
-      icon: 'fa-hard-hat'
-    },
-    {
-      name: 'Google Analytics Certified',
-      issuer: 'Google',
-      date: '2023',
-      valid: true,
-      icon: 'fa-chart-bar'
-    },
-    {
-      name: 'AWS Cloud Practitioner',
-      issuer: 'Amazon Web Services',
-      date: '2024',
-      valid: true,
-      icon: 'fa-cloud'
-    }
-  ]
+  const certifications = t.education_certifications
 
-  const technicalSkills = [
-    { category: 'Web Development', skills: [
-      { name: 'React/Next.js', level: 80 },
-      { name: 'TypeScript', level: 75 },
-      { name: 'Node.js', level: 70 },
-      { name: 'CSS/Tailwind', level: 85 }
-    ]},
-    { category: 'Logistyka & Transport', skills: [
-      { name: 'Planowanie tras', level: 95 },
-      { name: 'TMS Systems', level: 90 },
-      { name: 'GPS/Telemetria', level: 88 },
-      { name: 'Lean Management', level: 82 }
-    ]},
-    { category: 'Finanse & Analityka', skills: [
-      { name: 'Excel Advanced', level: 95 },
-      { name: 'Power BI', level: 78 },
-      { name: 'SQL', level: 70 },
-      { name: 'Financial Modeling', level: 85 }
-    ]},
-    { category: 'Języki', skills: [
-      { name: 'Polski', level: 100 },
-      { name: 'Niemiecki', level: 85 },
-      { name: 'Angielski', level: 80 }
-    ]}
-  ]
+  const technicalSkills = t.education_technical_skills
 
   const continuousLearning = [
     {
-      title: 'Kursy online i szkolenia',
-      items: [
-        'Coursera - Machine Learning Specialization',
-        'Udemy - Advanced React Development',
-        'LinkedIn Learning - Leadership Skills',
-        'YouTube Tech Channels - Daily Learning'
-      ]
+      title: t.education_continuous_learning.online_courses.title,
+      items: t.education_continuous_learning.online_courses.items
     },
     {
-      title: 'Conferencias i branżowe wydarzenia',
-      items: [
-        'TransLogistica 2023 - Kielce',
-        'React Summit 2024',
-        'Logistic Summit Poland',
-        'AI in Business Conference'
-      ]
+      title: t.education_continuous_learning.conferences.title,
+      items: t.education_continuous_learning.conferences.items
     },
     {
-      title: 'Własne projekty i eksperymenty',
-      items: [
-        'Transport route optimization AI',
-        'Personal finance tracking app',
-        'IoT sensors for fleet monitoring',
-        'Blockchain supply chain prototype'
-      ]
+      title: t.education_continuous_learning.projects.title,
+      items: t.education_continuous_learning.projects.items
+    },
+    {
+      title: t.education_continuous_learning.personal.title,
+      items: t.education_continuous_learning.personal.items
     }
   ]
 
-  const learningStats = [
-    { label: 'Ukończone kursy online', value: '50+', icon: 'fa-graduation-cap' },
-    { label: 'Godziny nauki rocznie', value: '200+', icon: 'fa-clock' },
-    { label: 'Certyfikaty branżowe', value: '6', icon: 'fa-certificate' },
-    { label: 'Księgi przeczytane', value: '25+', icon: 'fa-book' }
-  ]
+  const learningStats = t.education_learning_stats.map(stat => ({
+    ...stat,
+    displayValue: stat.value.includes('+') 
+      ? `${animatedStats[stat.label] || 0}+`
+      : (animatedStats[stat.label] || 0).toString()
+  }))
 
   return (
     <div className="min-h-screen py-12">
@@ -171,7 +128,7 @@ const EducationPage = () => {
                   <div className="mb-4">
                     <i className={`fas ${stat.icon} text-gold-400 text-3xl`} />
                   </div>
-                  <div className="text-3xl font-bold text-white mb-2">{stat.value}</div>
+                  <div className="text-3xl font-bold text-white mb-2">{stat.displayValue}</div>
                   <div className="text-gray-300 text-sm">{stat.label}</div>
                 </CardContent>
               </Card>

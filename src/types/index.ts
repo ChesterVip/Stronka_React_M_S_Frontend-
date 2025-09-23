@@ -413,6 +413,51 @@ export interface Translation {
   ui_achievements_title: string;
   ui_key_subjects_title: string;
   
+  // EducationPage learning stats
+  education_learning_stats: Array<{
+    label: string;
+    value: string;
+    icon: string;
+  }>;
+  
+  // EducationPage certifications
+  education_certifications: Array<{
+    name: string;
+    issuer: string;
+    date: string;
+    valid: boolean;
+    icon: string;
+  }>;
+  
+  // EducationPage technical skills
+  education_technical_skills: Array<{
+    category: string;
+    skills: Array<{
+      name: string;
+      level: number;
+    }>;
+  }>;
+  
+  // EducationPage continuous learning
+  education_continuous_learning: {
+    online_courses: {
+      title: string;
+      items: string[];
+    };
+    conferences: {
+      title: string;
+      items: string[];
+    };
+    projects: {
+      title: string;
+      items: string[];
+    };
+    personal: {
+      title: string;
+      items: string[];
+    };
+  };
+  
   // Footer
   footer_quick_links: string;
   footer_copyright: string;

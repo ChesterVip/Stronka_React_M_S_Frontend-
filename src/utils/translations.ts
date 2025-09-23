@@ -408,7 +408,7 @@ export const translations: Record<Language, Translation> = {
     education_data: {
       master: {
         title: "Studia magisterskie - Finanse i rachunkowość",
-        institution: "Uniwersytet Ekonomiczny",
+        institution: "Wyższa Szkoła Biznesu w Dąbrowie Górniczej",
         period: "2023-2025",
         status: "W trakcie - ostatni semestr",
         description: "Pogłębianie wiedzy z zakresu zarządzania finansami, analizy ekonomicznej, rachunkowości zarządczej i kontrolingu.",
@@ -422,7 +422,7 @@ export const translations: Record<Language, Translation> = {
       },
       engineer: {
         title: "Inżynier zarządzania procesami logistycznymi",
-        institution: "Politechnika Warszawska",
+        institution: "Wyższa Szkoła Biznesu w Dąbrowie Górniczej – Oddział w Krakowie",
         period: "2018-2022",
         status: "Ukończone",
         description: "Specjalizacja w logistyce. Optymalizacja procesów, zarządzanie łańcuchem dostaw, systemy transportowe i magazynowe.",
@@ -439,6 +439,133 @@ export const translations: Record<Language, Translation> = {
     // Common UI labels
     ui_achievements_title: "Kluczowe osiągnięcia",
     ui_key_subjects_title: "Kluczowe przedmioty:",
+    
+    // EducationPage learning stats
+    education_learning_stats: [
+      { label: "Ukończone kursy online", value: "20+", icon: "fa-graduation-cap" },
+      { label: "Godziny nauki rocznie", value: "200+", icon: "fa-clock" },
+      { label: "Certyfikaty branżowe", value: "5", icon: "fa-certificate" },
+      { label: "Księgi przeczytane", value: "25+", icon: "fa-book" }
+    ],
+    
+    // EducationPage certifications
+    education_certifications: [
+      {
+        name: "CKZ Transport osób i rzeczy (unijny)",
+        issuer: "CKZ",
+        date: "2016",
+        valid: true,
+        icon: "fa-bus"
+      },
+      {
+        name: "Dyplom Inżyniera Zarządzania Procesami Logistycznymi",
+        issuer: "Wyższa Szkoła Biznesu",
+        date: "2021",
+        valid: true,
+        icon: "fa-graduation-cap"
+      },
+      {
+        name: "Certyfikat Web Coders Full Stack Developer",
+        issuer: "Web Coders",
+        date: "2021",
+        valid: true,
+        icon: "fa-code"
+      },
+      {
+        name: "Java Developer",
+        issuer: "Web Coders",
+        date: "2022",
+        valid: true,
+        icon: "fa-coffee"
+      },
+      {
+        name: "Certyfikat Goethe-Institut B2 (Rozwój języka niemieckiego)",
+        issuer: "Goethe-Institut",
+        date: "2024",
+        valid: true,
+        icon: "fa-language"
+      }
+    ],
+    
+    // EducationPage technical skills
+    education_technical_skills: [
+      { 
+        category: "Web Development", 
+        skills: [
+          { name: "React/Next.js", level: 80 },
+          { name: "TypeScript", level: 75 },
+          { name: "Node.js", level: 70 },
+          { name: "CSS/Tailwind", level: 85 }
+        ]
+      },
+      { 
+        category: "Logistyka & Transport", 
+        skills: [
+          { name: "Planowanie tras", level: 95 },
+          { name: "TMS Systems", level: 90 },
+          { name: "GPS/Telemetria", level: 88 },
+          { name: "Lean Management", level: 82 }
+        ]
+      },
+      { 
+        category: "Finanse & Analityka", 
+        skills: [
+          { name: "Excel Advanced", level: 95 },
+          { name: "Power BI", level: 78 },
+          { name: "SQL", level: 70 },
+          { name: "Financial Modeling", level: 85 }
+        ]
+      },
+      { 
+        category: "Języki", 
+        skills: [
+          { name: "Polski", level: 100 },
+          { name: "Niemiecki", level: 85 },
+          { name: "Angielski", level: 80 }
+        ]
+      }
+    ],
+    
+    // EducationPage continuous learning
+    education_continuous_learning: {
+      online_courses: {
+        title: "Kursy online i szkolenia",
+        items: [
+          "Coursera - Machine Learning Specialization",
+          "Udemy - Advanced React Development",
+          "LinkedIn Learning - Leadership Skills",
+          "YouTube Tech Channels - Daily Learning"
+        ]
+      },
+      conferences: {
+        title: "Konferencje i branżowe wydarzenia",
+        items: [
+          "TransLogistica 2023 - Kielce",
+          "React Summit 2024",
+          "Logistic Summit Poland",
+          "AI in Business Conference"
+        ]
+      },
+      projects: {
+        title: "Własne projekty i eksperymenty",
+        items: [
+          "Transport route optimization AI",
+          "Personal finance tracking app",
+          "IoT sensors for fleet monitoring",
+          "Blockchain supply chain prototype"
+        ]
+      },
+      personal: {
+        title: "Projekty osobiste i pasje",
+        items: [
+          "Rozwój własnej firmy transportowej",
+          "Eksperymenty z Flipper Zero i IoT",
+          "Automatyzacje n8n i Make do codziennych zadań",
+          "Optymalizacja procesów logistycznych w praktyce",
+          "Testy i użytkowanie samochodu Tesla (elektromobilność)"
+        ]
+      }
+    },
     
     // Footer
     footer_quick_links: "Szybkie linki",
@@ -857,7 +984,7 @@ export const translations: Record<Language, Translation> = {
     education_data: {
       master: {
         title: "Masterstudium - Finanzen und Rechnungswesen",
-        institution: "Wirtschaftsuniversität",
+        institution: "Hochschule für Wirtschaft in Dąbrowa Górnicza",
         period: "2023-2025",
         status: "In Bearbeitung - letztes Semester",
         description: "Vertiefung der Kenntnisse in Finanzmanagement, Wirtschaftsanalyse, Management Accounting und Controlling.",
@@ -871,7 +998,7 @@ export const translations: Record<Language, Translation> = {
       },
       engineer: {
         title: "Ingenieur für Logistikprozessmanagement",
-        institution: "Technische Universität Warschau",
+        institution: "Hochschule für Wirtschaft in Dąbrowa Górnicza – Zweigstelle Krakau",
         period: "2018-2022",
         status: "Abgeschlossen",
         description: "Spezialisierung in Logistik. Prozessoptimierung, Supply Chain Management, Transport- und Lagersysteme.",
@@ -888,6 +1015,133 @@ export const translations: Record<Language, Translation> = {
     // Common UI labels
     ui_achievements_title: "Wichtigste Erfolge",
     ui_key_subjects_title: "Schlüsselfächer:",
+    
+    // EducationPage learning stats
+    education_learning_stats: [
+      { label: "Abgeschlossene Online-Kurse", value: "20+", icon: "fa-graduation-cap" },
+      { label: "Lernstunden pro Jahr", value: "200+", icon: "fa-clock" },
+      { label: "Branchenzertifikate", value: "5", icon: "fa-certificate" },
+      { label: "Gelesene Bücher", value: "25+", icon: "fa-book" }
+    ],
+    
+    // EducationPage certifications
+    education_certifications: [
+      {
+        name: "CKZ Transport von Personen und Gütern (EU)",
+        issuer: "CKZ",
+        date: "2016",
+        valid: true,
+        icon: "fa-bus"
+      },
+      {
+        name: "Diplom Ingenieur für Logistikprozessmanagement",
+        issuer: "Hochschule für Wirtschaft",
+        date: "2021",
+        valid: true,
+        icon: "fa-graduation-cap"
+      },
+      {
+        name: "Web Coders Full Stack Developer Zertifikat",
+        issuer: "Web Coders",
+        date: "2021",
+        valid: true,
+        icon: "fa-code"
+      },
+      {
+        name: "Java Developer",
+        issuer: "Web Coders",
+        date: "2022",
+        valid: true,
+        icon: "fa-coffee"
+      },
+      {
+        name: "Goethe-Institut B2 Zertifikat (Deutschsprachige Entwicklung)",
+        issuer: "Goethe-Institut",
+        date: "2024",
+        valid: true,
+        icon: "fa-language"
+      }
+    ],
+    
+    // EducationPage technical skills
+    education_technical_skills: [
+      { 
+        category: "Web Development", 
+        skills: [
+          { name: "React/Next.js", level: 80 },
+          { name: "TypeScript", level: 75 },
+          { name: "Node.js", level: 70 },
+          { name: "CSS/Tailwind", level: 85 }
+        ]
+      },
+      { 
+        category: "Logistik & Transport", 
+        skills: [
+          { name: "Routenplanung", level: 95 },
+          { name: "TMS-Systeme", level: 90 },
+          { name: "GPS/Telemetrie", level: 88 },
+          { name: "Lean Management", level: 82 }
+        ]
+      },
+      { 
+        category: "Finanzen & Analytik", 
+        skills: [
+          { name: "Excel Advanced", level: 95 },
+          { name: "Power BI", level: 78 },
+          { name: "SQL", level: 70 },
+          { name: "Financial Modeling", level: 85 }
+        ]
+      },
+      { 
+        category: "Sprachen", 
+        skills: [
+          { name: "Polnisch", level: 100 },
+          { name: "Deutsch", level: 85 },
+          { name: "Englisch", level: 80 }
+        ]
+      }
+    ],
+    
+    // EducationPage continuous learning
+    education_continuous_learning: {
+      online_courses: {
+        title: "Online-Kurse und Schulungen",
+        items: [
+          "Coursera - Machine Learning Specialization",
+          "Udemy - Advanced React Development",
+          "LinkedIn Learning - Leadership Skills",
+          "YouTube Tech Channels - Daily Learning"
+        ]
+      },
+      conferences: {
+        title: "Konferenzen und Branchenveranstaltungen",
+        items: [
+          "TransLogistica 2023 - Kielce",
+          "React Summit 2024",
+          "Logistic Summit Poland",
+          "AI in Business Conference"
+        ]
+      },
+      projects: {
+        title: "Eigene Projekte und Experimente",
+        items: [
+          "Transport route optimization AI",
+          "Personal finance tracking app",
+          "IoT sensors for fleet monitoring",
+          "Blockchain supply chain prototype"
+        ]
+      },
+      personal: {
+        title: "Persönliche Projekte und Leidenschaften",
+        items: [
+          "Entwicklung des eigenen Transportunternehmens",
+          "Experimente mit Flipper Zero und IoT",
+          "n8n und Make Automatisierungen für tägliche Aufgaben",
+          "Optimierung logistischer Prozesse in der Praxis",
+          "Tests und Nutzung des Tesla-Autos (Elektromobilität)"
+        ]
+      }
+    },
     
     // Footer
     footer_quick_links: "Schnelle Links",
