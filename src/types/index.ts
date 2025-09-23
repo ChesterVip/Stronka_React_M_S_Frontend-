@@ -201,6 +201,7 @@ export interface Translation {
   services_pricing_subtitle: string;
   services_cta_title: string;
   services_cta_subtitle: string;
+  services_webdev_info: string;
   services_cta_contact: string;
   services_cta_about: string;
   services_learn_more: string;

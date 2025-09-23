@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useLanguage } from '@/hooks/useLanguage'
 import { useNavigate } from 'react-router-dom'
 import AnimatedSection from '@/components/ui/AnimatedSection'
@@ -9,8 +8,6 @@ import SEO, { pageConfigs } from '@/components/SEO'
 const ServicesPage = () => {
   const { t } = useLanguage()
   const navigate = useNavigate()
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
-  const [hoveredService, setHoveredService] = useState<number | null>(null)
 
   const serviceCategories = [
     {
@@ -119,50 +116,6 @@ const ServicesPage = () => {
     }
   ]
 
-  const pricingPlans = [
-    {
-      name: 'Basic',
-      price: '199',
-      period: 'za projekt',
-      description: 'Idealne dla małych firm',
-      features: [
-        'Konsultacja wstępna',
-        'Analiza podstawowa',
-        'Raport z rekomendacjami',
-        'Support email'
-      ],
-      popular: false
-    },
-    {
-      name: 'Professional',
-      price: '499',
-      period: 'za projekt',
-      description: 'Dla średnich przedsiębiorstw',
-      features: [
-        'Wszystko z Basic',
-        'Implementacja rozwiązań',
-        'Szkolenie zespołu',
-        'Support 30 dni',
-        'Monitoring efektów'
-      ],
-      popular: true
-    },
-    {
-      name: 'Enterprise',
-      price: 'Oferta',
-      period: 'indywidualna',
-      description: 'Dla dużych organizacji',
-      features: [
-        'Wszystko z Professional',
-        'Dedykowany projekt manager',
-        'Integracje zaawansowane',
-        'Support 24/7',
-        'SLA guarantee'
-      ],
-      popular: false
-    }
-  ]
-
   return (
     <>
       <SEO {...pageConfigs.services} />
@@ -207,8 +160,6 @@ const ServicesPage = () => {
                       variant="gradient"
                       hover="lift"
                       className="group cursor-pointer relative overflow-hidden"
-                      onMouseEnter={() => setHoveredService(categoryIndex * 3 + serviceIndex)}
-                      onMouseLeave={() => setHoveredService(null)}
                       onClick={() => navigate('/contact', { state: { service: service.title } })}
                     >
                       {/* Hover Effect Overlay */}
@@ -257,76 +208,6 @@ const ServicesPage = () => {
           ))}
         </div>
 
-        {/* Pricing Section */}
-        <AnimatedSection animation="slide-up" threshold={0.3}>
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
-              {t.services_pricing_title}
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              {t.services_pricing_subtitle}
-            </p>
-          </div>
-        </AnimatedSection>
-
-        <div className="grid md:grid-cols-3 gap-8 mb-20">
-          {pricingPlans.map((plan, index) => (
-            <AnimatedSection
-              key={index}
-              animation="slide-up"
-              delay={100 + index * 100}
-              threshold={0.3}
-            >
-              <Card
-                variant={plan.popular ? "neon" : "default"}
-                hover="lift"
-                className={`text-center relative overflow-hidden ${
-                  plan.popular ? 'border-gold-500/50 shadow-lg shadow-gold-500/20' : ''
-                }`}
-              >
-                {plan.popular && (
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-gold-500 text-black px-4 py-1 rounded-full text-sm font-bold">
-                      {t.services_most_popular}
-                    </span>
-                  </div>
-                )}
-                
-                <CardHeader className="pt-8">
-                  <CardTitle className="text-2xl mb-2">{plan.name}</CardTitle>
-                  <div className="mb-4">
-                    <span className="text-4xl font-bold text-gold-400">{plan.price}</span>
-                    {plan.price !== 'Oferta' && <span className="text-gray-400"> PLN</span>}
-                    <div className="text-gray-400 text-sm">{plan.period}</div>
-                  </div>
-                  <CardDescription className="text-gray-300">
-                    {plan.description}
-                  </CardDescription>
-                </CardHeader>
-
-                <CardContent>
-                  <ul className="space-y-3 mb-8">
-                    {plan.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-gray-300">
-                        <i className="fas fa-check text-green-400 text-sm mr-3" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  
-                  <Button
-                    variant={plan.popular ? "gold" : "outline"}
-                    className="w-full"
-                    onClick={() => navigate('/contact', { state: { plan: plan.name } })}
-                  >
-                    {plan.price === 'Oferta' ? t.services_contact_us : t.services_choose_plan}
-                  </Button>
-                </CardContent>
-              </Card>
-            </AnimatedSection>
-          ))}
-        </div>
-
         {/* CTA Section */}
         <AnimatedSection animation="slide-up" threshold={0.3}>
           <div className="text-center py-16 bg-gradient-to-r from-gold-500/10 to-gold-600/10 rounded-2xl border border-gold-500/20">
@@ -336,6 +217,10 @@ const ServicesPage = () => {
             <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
               {t.services_cta_subtitle}
             </p>
+            <div className="bg-gold-500/10 border border-gold-500/20 rounded-lg p-6 max-w-2xl mx-auto mb-8">
+              <h4 className="text-lg font-bold text-gold-400 mb-2">💻 Web Development</h4>
+              <p className="text-gray-300">{t.services_webdev_info}</p>
+            </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 onClick={() => navigate('/contact')}
