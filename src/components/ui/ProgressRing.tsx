@@ -85,7 +85,7 @@ const ProgressRing = ({
       {/* Percentage text */}
       {showPercentage && (
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className={cn("text-2xl font-bold", textColorClasses[color])}>
+          <span className={cn("text-sm font-bold", textColorClasses[color])}>
             {Math.round(currentProgress)}%
           </span>
         </div>
