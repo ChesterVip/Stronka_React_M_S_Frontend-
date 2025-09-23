@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom'
 interface SEOProps {
   title?: string
   description?: string
-  keywords?: string[]
+  keywords?: readonly string[]
   author?: string
   type?: 'website' | 'article' | 'profile'
   image?: string

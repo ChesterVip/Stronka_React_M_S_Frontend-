@@ -30,12 +30,13 @@ const buttonVariants = (props: any) => {
 }
 
 export interface ButtonProps 
-  extends ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode
   leftIcon?: ReactNode
   rightIcon?: ReactNode
   loading?: boolean
+  variant?: 'gold' | 'outline' | 'ghost' | 'destructive' | 'secondary'
+  size?: 'sm' | 'md' | 'lg' | 'xl'
 }
 
 const Button = ({ 
