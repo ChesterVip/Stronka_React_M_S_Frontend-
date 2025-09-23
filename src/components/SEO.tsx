@@ -19,8 +19,8 @@ interface SEOProps {
 }
 
 const SEO = ({
-  title = 'Mariusz Sokołowski - Transport | Logistyka | Finanse | Technologie',
-  description = 'Mariusz Sokołowski - właściciel firmy transportowej, inżynier logistyki, specjalista finansów i technologii. 5+ lat doświadczenia jako kierowca CE w Szwajcarii.',
+  title = 'Mariusz Sokołowski - Transport × IT × AI | Tesla Owner | Flipper Zero',
+  description = 'Mariusz Sokołowski - kierowca C+E w Szwajcarii, przedsiębiorca transportowy, udziałowiec FG Falke, pasjonat IT/AI. Tesla owner, Flipper Zero, meta-geek.',
   keywords = [
     'Mariusz Sokołowski',
     'transport',
@@ -28,10 +28,18 @@ const SEO = ({
     'finanse',
     'rachunkowość',
     'technologie',
+    'Schweiz',
     'Szwajcaria',
     'kierowca CE',
+    'kierowca C+E',
     'React',
     'TypeScript',
+    'Java',
+    'AI',
+    'Tesla',
+    'Flipper Zero',
+    'FG Falke',
+    'Coop Schweiz',
     'portfolio'
   ],
   author = 'Mariusz Sokołowski',
@@ -118,8 +126,8 @@ const SEO = ({
     updateMetaTag('twitter:card', 'summary_large_image', true)
     updateMetaTag('twitter:title', title, true)
     updateMetaTag('twitter:description', description, true)
-    updateMetaTag('twitter:creator', '@mariosokolowski', true)
-    updateMetaTag('twitter:site', '@mariosokolowski', true)
+    updateMetaTag('twitter:creator', '@chestervip', true)
+    updateMetaTag('twitter:site', '@chestervip', true)
     
     if (ogImage) {
       updateMetaTag('twitter:image', ogImage, true)
@@ -177,22 +185,42 @@ const SEO = ({
       if (type === 'profile') {
         Object.assign(jsonLd, {
           "@type": "Person",
-          "jobTitle": "Transport Owner & Logistics Engineer",
-          "knowsAbout": ["Transport", "Logistyka", "Finanse", "Technologie", "React", "TypeScript"],
-          "worksFor": {
-            "@type": "Organization",
-            "name": "Właściciel firmy transportowej"
-          },
-          "alumniOf": {
-            "@type": "EducationalOrganization",
-            "name": "Uniwersytet - Finanse i rachunkowość"
-          },
+          "jobTitle": "Kierowca C+E | Przedsiębiorca | IT/AI",
+          "knowsAbout": ["Transport", "Logistyka", "Finanse", "Technologie", "React", "TypeScript", "Java", "AI", "Automatyzacja"],
+          "worksFor": [
+            {
+              "@type": "Organization",
+              "name": "Coop Schweiz",
+              "jobTitle": "Kierowca CE"
+            },
+            {
+              "@type": "Organization", 
+              "name": "FG Falke sp. z o.o.",
+              "jobTitle": "Udziałowiec mniejszościowy"
+            }
+          ],
+          "alumniOf": [
+            {
+              "@type": "EducationalOrganization",
+              "name": "Wyższa Szkoła Biznesu w Dąbrowie Górniczej",
+              "degree": "Magister Finanse i Rachunkowość"
+            },
+            {
+              "@type": "EducationalOrganization",
+              "name": "Wyższa Szkoła Biznesu w Dąbrowie Górniczej – Oddział w Krakowie",
+              "degree": "Inżynier Zarządzanie Procesami Logistycznymi"
+            }
+          ],
           "address": {
             "@type": "PostalAddress",
-            "addressCountry": "Switzerland"
+            "addressCountry": "Switzerland",
+            "addressLocality": "Schweiz"
           },
           "sameAs": [
-            "https://linkedin.com/in/mariuszsokolowski"
+            "https://www.linkedin.com/in/mariuszsokolowski5014/",
+            "https://github.com/ChesterVip",
+            "https://gitlab.com/ChesterVip",
+            "https://www.facebook.com/mariusz.sokolowski.94"
           ]
         })
       }
@@ -231,45 +259,45 @@ export default SEO
 // Pre-defined SEO configs for different pages
 export const pageConfigs = {
   home: {
-    title: 'Mariusz Sokołowski - Transport | Logistyka | Finanse | Technologie',
-    description: 'Właściciel firmy transportowej z Szwajcarii. Inżynier logistyki, specjalista finansów i technologii. Portfolio projektów i doświadczenia.',
-    keywords: ['Mariusz Sokołowski', 'transport', 'logistyka', 'finanse', 'Szwajcaria', 'portfolio'],
+    title: 'Mariusz Sokołowski - Transport × IT × AI | Tesla Owner | Flipper Zero',
+    description: 'Kierowca C+E w Szwajcarii, przedsiębiorca transportowy, udziałowiec FG Falke, pasjonat IT/AI. Tesla owner, Flipper Zero, meta-geek.',
+    keywords: ['Mariusz Sokołowski', 'transport', 'logistyka', 'finanse', 'Schweiz', 'Szwajcaria', 'kierowca CE', 'Tesla', 'Flipper Zero', 'FG Falke', 'portfolio'],
     type: 'website' as const
   },
   about: {
-    title: 'O mnie - Mariusz Sokołowski | Transport & Technologie',
-    description: 'Poznaj moją historię - od kierowcy CE w Szwajcarii do właściciela firmy transportowej i pasjonata technologii.',
-    keywords: ['o mnie', 'biografia', 'doświadczenie', 'transport', 'technologie'],
+    title: 'O mnie - Mariusz Sokołowski | Transport × IT × AI',
+    description: 'Poznaj moją historię - od kierowcy C+E w Szwajcarii przez przedsiębiorstwo transportowe do udziałów w FG Falke i pasji IT/AI.',
+    keywords: ['o mnie', 'biografia', 'doświadczenie', 'transport', 'technologie', 'AI', 'Tesla', 'Flipper Zero'],
     type: 'profile' as const
   },
   services: {
     title: 'Usługi - Transport, Logistyka, Technologie | Mariusz Sokołowski',
-    description: 'Oferuję kompleksowe usługi transportowe, doradztwo logistyczne i rozwiązania technologiczne. Sprawdź co mogę dla Ciebie zrobić.',
-    keywords: ['usługi transportowe', 'logistyka', 'doradztwo', 'technologie', 'Szwajcaria'],
+    description: 'Oferuję kompleksowe usługi transportowe, doradztwo logistyczne i rozwiązania technologiczne. Web Development od 499 CHF.',
+    keywords: ['usługi transportowe', 'logistyka', 'doradztwo', 'technologie', 'web development', 'Schweiz'],
     type: 'website' as const
   },
   experience: {
     title: 'Doświadczenie zawodowe - Mariusz Sokołowski',
-    description: 'Moja kariera zawodowa - od kierowcy CE przez logistykę po własną firmę transportową. 5+ lat doświadczenia w Szwajcarii.',
-    keywords: ['doświadczenie', 'kariera', 'kierowca CE', 'firma transportowa', 'logistyka'],
+    description: 'Moja kariera zawodowa - od kierowcy C+E przez logistykę po własną firmę transportową i udziałów w FG Falke. 5+ lat doświadczenia w Szwajcarii.',
+    keywords: ['doświadczenie', 'kariera', 'kierowca CE', 'firma transportowa', 'logistyka', 'FG Falke', 'Coop Schweiz'],
     type: 'website' as const
   },
   education: {
     title: 'Edukacja i certyfikaty - Mariusz Sokołowski',
-    description: 'Moje wykształcenie, certyfikaty i ciągła nauka. Studia z finansów i rachunkowości, kursy technologiczne.',
-    keywords: ['edukacja', 'certyfikaty', 'finanse', 'rachunkowość', 'kursy', 'nauka'],
+    description: 'Moje wykształcenie, certyfikaty i ciągła nauka. Studia z finansów i rachunkowości, inżynier logistyki, kursy technologiczne.',
+    keywords: ['edukacja', 'certyfikaty', 'finanse', 'rachunkowość', 'logistyka', 'kursy', 'nauka', 'Wyższa Szkoła Biznesu'],
     type: 'website' as const
   },
   tech: {
-    title: 'Projekty technologiczne - React, TypeScript, AI | Mariusz Sokołowski',
-    description: 'Portfolio moich projektów technologicznych - aplikacje React, systemy AI, automatyzacja procesów biznesowych.',
-    keywords: ['projekty', 'React', 'TypeScript', 'AI', 'automatyzacja', 'portfolio technologiczne'],
+    title: 'Projekty technologiczne - React, TypeScript, Java, AI | Mariusz Sokołowski',
+    description: 'Portfolio moich projektów technologicznych - aplikacje React, systemy AI, automatyzacja procesów biznesowych, Java development.',
+    keywords: ['projekty', 'React', 'TypeScript', 'Java', 'AI', 'automatyzacja', 'portfolio technologiczne', 'n8n', 'Make'],
     type: 'website' as const
   },
   contact: {
     title: 'Kontakt - Mariusz Sokołowski | Współpraca biznesowa',
-    description: 'Skontaktuj się ze mną w sprawie projektów transportowych, technologicznych lub współpracy biznesowej.',
-    keywords: ['kontakt', 'współpraca', 'projekty', 'transport', 'technologie'],
+    description: 'Skontaktuj się ze mną w sprawie projektów transportowych, technologicznych lub współpracy biznesowej. Kierowca C+E | Przedsiębiorca | IT/AI.',
+    keywords: ['kontakt', 'współpraca', 'projekty', 'transport', 'technologie', 'Schweiz', 'FG Falke'],
     type: 'website' as const
   },
   notfound: {
