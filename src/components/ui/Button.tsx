@@ -9,6 +9,7 @@ const buttonVariants = (props: any) => {
   const baseClasses = "inline-flex items-center justify-center rounded-xl font-bold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none transform hover:scale-105"
   const variantClasses = {
     gold: "bg-gradient-to-r from-gold-400 to-gold-500 hover:from-gold-300 hover:to-gold-400 text-black shadow-lg hover:shadow-xl",
+    primary: "bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-400 hover:to-blue-500 text-white shadow-lg hover:shadow-xl",
     outline: "border-2 border-gold-500 text-gold-400 hover:bg-gold-500 hover:text-black",
     ghost: "text-gray-300 hover:text-white hover:bg-gray-800/50",
     destructive: "bg-red-600 text-white hover:bg-red-700",
@@ -35,7 +36,7 @@ export interface ButtonProps
   leftIcon?: ReactNode
   rightIcon?: ReactNode
   loading?: boolean
-  variant?: 'gold' | 'outline' | 'ghost' | 'destructive' | 'secondary'
+  variant?: 'gold' | 'outline' | 'ghost' | 'destructive' | 'secondary' | 'primary'
   size?: 'sm' | 'md' | 'lg' | 'xl'
 }
 
