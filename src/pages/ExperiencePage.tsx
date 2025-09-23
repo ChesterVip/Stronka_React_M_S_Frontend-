@@ -38,6 +38,18 @@ const ExperiencePage = () => {
       color: 'gold'
     },
     {
+      id: 'fg-falke',
+      title: t.experience_data.fg_falke.title,
+      period: t.experience_data.fg_falke.period,
+      company: t.experience_data.fg_falke.company,
+      location: t.experience_data.fg_falke.location,
+      description: t.experience_data.fg_falke.description,
+      achievements: t.experience_data.fg_falke.achievements,
+      current: false,
+      icon: 'fa-lightbulb',
+      color: 'purple'
+    },
+    {
       id: 'early-driver',
       title: t.experience_data.early_driver.title,
       period: t.experience_data.early_driver.period,
@@ -77,7 +89,7 @@ const ExperiencePage = () => {
       skills: [
         { name: 'Web Development', level: 80 },
         { name: 'React/TypeScript', level: 75 },
-        { name: 'Automatyzacja procesów', level: 78 },
+        { name: 'Automatyzacja procesów (n8n, Make)', level: 78 },
         { name: 'Analiza danych', level: 70 },
         { name: 'AI Tools', level: 72 }
       ]

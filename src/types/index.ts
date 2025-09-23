@@ -371,6 +371,14 @@ export interface Translation {
       description: string;
       achievements: string[];
     };
+    fg_falke: {
+      title: string;
+      period: string;
+      company: string;
+      location: string;
+      description: string;
+      achievements: string[];
+    };
     early_driver: {
       title: string;
       period: string;

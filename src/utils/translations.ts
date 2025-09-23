@@ -355,45 +355,51 @@ export const translations: Record<Language, Translation> = {
     // ExperiencePage specific
     experience_data: {
       current_swiss: {
-        title: "Kierowca CE - Transport międzynarodowy",
-        period: "2019 - obecnie",
-        company: "Swiss Transport Company",
+        title: "Kierowca CE",
+        period: "09.2022 – obecnie",
+        company: "Coop Schweiz (Schafisheim, CH)",
         location: "Szwajcaria",
-        description: "Profesjonalna obsługa transportu międzynarodowego w jednej z wiodących firm szwajcarskich. Odpowiedzialność za bezpieczne i terminowe dostawy na terenie całej Europy.",
+        description: "Dystrybucja towarów na terenie Szwajcarii, zgodność z przepisami CH/EU, obsługa tachografu.",
         achievements: [
-          "Ponad 500,000 km przejechanych bez wypadków",
-          "Obsługa klientów premium z 98% satysfakcją",
-          "Optymalizacja tras skutkująca 15% redukcją kosztów paliwa",
-          "Mentoring nowych kierowców - przeszkolenie 12 osób",
-          "Doskonalenie znajomości języków (niemiecki, angielski)"
+          "Terminowość dostaw > 98%",
+          "Bezpieczna jazda – brak szkód",
+          "Optymalizacja tras w górskich warunkach"
         ]
       },
       business_owner: {
         title: "Właściciel firmy transportowej",
-        period: "2017 - obecnie",
-        company: "MST Transport",
-        location: "Polska",
-        description: "Założyciel i właściciel firmy transportowej specjalizującej się w przewozach krajowych i międzynarodowych. Zarządzanie wszystkimi aspektami biznesu od planowania po realizację.",
+        period: "01.2018 – obecnie",
+        company: "Transport własny (PL–DE–CH)",
+        location: "Polska / Niemcy / Szwajcaria",
+        description: "Prowadzenie własnej działalności w zakresie transportu międzynarodowego.",
         achievements: [
-          "Zbudowanie firmy od zera do stałej bazy 50+ klientów",
-          "Zarządzanie flotą 5 pojazdów ciężkich",
-          "Wzrost obrotów o 200% w ciągu pierwszych 3 lat",
-          "Implementacja systemu GPS tracking i optymalizacji tras",
-          "Rozwój długoterminowych partnerstw biznesowych"
+          "Współpraca z DHL, Baltershwiller, OHL Cargo, Flex, Migolog",
+          "Optymalizacja kosztów i tras",
+          "Budowa stabilnej sieci klientów"
+        ]
+      },
+      fg_falke: {
+        title: "Udziałowiec mniejszościowy – consulting/doradztwo",
+        period: "12.2020 – obecnie",
+        company: "FG Falke sp. z o.o.",
+        location: "Polska",
+        description: "Doradztwo operacyjne i finansowe, procesy, projekty IT, automatyzacje i integracje AI.",
+        achievements: [
+          "Rozwój usług consultingowych",
+          "Współpraca w branży transport/logistyka",
+          "Implementacja nowych technologii AI i automatyzacji"
         ]
       },
       early_driver: {
-        title: "Kierowca zawodowy",
-        period: "2015 - 2019",
-        company: "Various Transport Companies",
-        location: "Polska / Europa",
-        description: "Początki kariery w branży transportowej. Zdobywanie doświadczenia w różnych typach przewozów - od transportu krajowego po międzynarodowy.",
+        title: "Kierowca Stückgut",
+        period: "2020 – 2022",
+        company: "Fiege Logistik (Oftringen, CH)",
+        location: "Szwajcaria",
+        description: "Dystrybucja drobnicowa, planowanie tras, obsługa klienta.",
         achievements: [
-          "Nauka obsługi różnych typów ładunków (ADR, cargo specjalne)",
-          "Budowanie wiedzy o branży transportowej w Europie",
-          "Rozwój umiejętności zawodowych i interpersonalnych",
-          "Certyfikaty BHP i bezpiecznej jazdy",
-          "Pierwsze kontakty międzynarodowe"
+          "Efektywna obsługa dostaw lokalnych",
+          "Wdrożenie systemu skanowania przesyłek",
+          "Wysoki poziom satysfakcji klientów"
         ]
       }
     },
@@ -798,45 +804,51 @@ export const translations: Record<Language, Translation> = {
     // ExperiencePage specific
     experience_data: {
       current_swiss: {
-        title: "CE-Fahrer - Internationaler Transport",
-        period: "2019 - aktuell",
-        company: "Swiss Transport Company",
+        title: "CE-Fahrer",
+        period: "09.2022 – aktuell",
+        company: "Coop Schweiz (Schafisheim, CH)",
         location: "Schweiz",
-        description: "Professionelle Abwicklung des internationalen Transports bei einem führenden Schweizer Unternehmen. Verantwortung für sichere und pünktliche Lieferungen in ganz Europa.",
+        description: "Warenverteilung in der Schweiz, Einhaltung der CH/EU-Vorschriften, Tachograph-Bedienung.",
         achievements: [
-          "Über 500.000 km ohne Unfälle gefahren",
-          "Premium-Kundenbetreuung mit 98% Zufriedenheit",
-          "Routenoptimierung mit 15% Kraftstoffeinsparung",
-          "Mentoring neuer Fahrer - Schulung von 12 Personen",
-          "Verbesserung der Sprachkenntnisse (Deutsch, Englisch)"
+          "Lieferpünktlichkeit > 98%",
+          "Sichere Fahrweise – keine Schäden",
+          "Routenoptimierung in Bergbedingungen"
         ]
       },
       business_owner: {
         title: "Transportunternehmer",
-        period: "2017 - aktuell",
-        company: "MST Transport",
-        location: "Polen",
-        description: "Gründer und Eigentümer eines Transportunternehmens, das sich auf nationale und internationale Transporte spezialisiert. Management aller Geschäftsaspekte von der Planung bis zur Umsetzung.",
+        period: "01.2018 – aktuell",
+        company: "Eigener Transport (PL–DE–CH)",
+        location: "Polen / Deutschland / Schweiz",
+        description: "Führung einer eigenen Tätigkeit im Bereich internationaler Transporte.",
         achievements: [
-          "Aufbau des Unternehmens von null auf stabile Basis von 50+ Kunden",
-          "Management einer Flotte von 5 schweren Fahrzeugen",
-          "Umsatzwachstum von 200% in den ersten 3 Jahren",
-          "Implementierung von GPS-Tracking und Routenoptimierung",
-          "Entwicklung langfristiger Geschäftspartnerschaften"
+          "Zusammenarbeit mit DHL, Baltershwiller, OHL Cargo, Flex, Migolog",
+          "Kosten- und Routenoptimierung",
+          "Aufbau eines stabilen Kundenstamms"
+        ]
+      },
+      fg_falke: {
+        title: "Minderheitsgesellschafter – Consulting/Beratung",
+        period: "12.2020 – aktuell",
+        company: "FG Falke sp. z o.o.",
+        location: "Polen",
+        description: "Operative und finanzielle Beratung, Prozesse, IT-Projekte, Automatisierungen und AI-Integrationen.",
+        achievements: [
+          "Entwicklung von Consulting-Dienstleistungen",
+          "Zusammenarbeit in der Transport/Logistik-Branche",
+          "Implementierung neuer AI- und Automatisierungstechnologien"
         ]
       },
       early_driver: {
-        title: "Berufsfahrer",
-        period: "2015 - 2019",
-        company: "Verschiedene Transportunternehmen",
-        location: "Polen / Europa",
-        description: "Anfang der Karriere in der Transportbranche. Erfahrungssammlung in verschiedenen Transportarten - vom nationalen bis zum internationalen Transport.",
+        title: "Stückgut-Fahrer",
+        period: "2020 – 2022",
+        company: "Fiege Logistik (Oftringen, CH)",
+        location: "Schweiz",
+        description: "Stückgutverteilung, Routenplanung, Kundenbetreuung.",
         achievements: [
-          "Lernen der Handhabung verschiedener Ladungstypen (ADR, Spezialladung)",
-          "Aufbau von Wissen über die Transportbranche in Europa",
-          "Entwicklung beruflicher und zwischenmenschlicher Fähigkeiten",
-          "BHP- und Sicherheitsfahrzeug-Zertifikate",
-          "Erste internationale Kontakte"
+          "Effiziente Abwicklung lokaler Lieferungen",
+          "Einführung eines Sendungsscanningsystems",
+          "Hohes Maß an Kundenzufriedenheit"
         ]
       }
     },
