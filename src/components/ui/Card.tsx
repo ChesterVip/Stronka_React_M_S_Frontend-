@@ -36,9 +36,11 @@ const cardVariants = (props: any) => {
 }
 
 export interface CardProps 
-  extends HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof cardVariants> {
+  extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode
+  variant?: 'default' | 'gradient' | 'glass' | 'solid' | 'neon'
+  size?: 'sm' | 'md' | 'lg' | 'xl'
+  hover?: 'none' | 'lift' | 'glow'
 }
 
 const Card = ({ className, variant, size, hover, children, ...props }: CardProps) => {

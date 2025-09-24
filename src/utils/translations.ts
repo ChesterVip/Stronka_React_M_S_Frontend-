@@ -200,6 +200,7 @@ export const translations: Record<Language, Translation> = {
     services_pricing_subtitle: "Wybierz pakiet dopasowany do Twoich potrzeb",
     services_cta_title: "Nie widzisz odpowiedniej usługi?",
     services_cta_subtitle: "Skontaktuj się ze mną, aby omówić indywidualne rozwiązanie dostosowane do Twoich potrzeb.",
+    services_webdev_info: "Web Development - prosty info page od 499 CHF z rocznym deploymentem!",
     services_cta_contact: "Skontaktuj się",
     services_cta_about: "Poznaj mnie lepiej",
     services_learn_more: "Dowiedz się więcej",
@@ -354,45 +355,51 @@ export const translations: Record<Language, Translation> = {
     // ExperiencePage specific
     experience_data: {
       current_swiss: {
-        title: "Kierowca CE - Transport międzynarodowy",
-        period: "2019 - obecnie",
-        company: "Swiss Transport Company",
+        title: "Kierowca CE",
+        period: "09.2022 – obecnie",
+        company: "Coop Schweiz (Schafisheim, CH)",
         location: "Szwajcaria",
-        description: "Profesjonalna obsługa transportu międzynarodowego w jednej z wiodących firm szwajcarskich. Odpowiedzialność za bezpieczne i terminowe dostawy na terenie całej Europy.",
+        description: "Dystrybucja towarów na terenie Szwajcarii, zgodność z przepisami CH/EU, obsługa tachografu.",
         achievements: [
-          "Ponad 500,000 km przejechanych bez wypadków",
-          "Obsługa klientów premium z 98% satysfakcją",
-          "Optymalizacja tras skutkująca 15% redukcją kosztów paliwa",
-          "Mentoring nowych kierowców - przeszkolenie 12 osób",
-          "Doskonalenie znajomości języków (niemiecki, angielski)"
+          "Terminowość dostaw > 98%",
+          "Bezpieczna jazda – brak szkód",
+          "Optymalizacja tras w górskich warunkach"
         ]
       },
       business_owner: {
         title: "Właściciel firmy transportowej",
-        period: "2017 - obecnie",
-        company: "MST Transport",
-        location: "Polska",
-        description: "Założyciel i właściciel firmy transportowej specjalizującej się w przewozach krajowych i międzynarodowych. Zarządzanie wszystkimi aspektami biznesu od planowania po realizację.",
+        period: "01.2018 – obecnie",
+        company: "Transport własny (PL–DE–CH)",
+        location: "Polska / Niemcy / Szwajcaria",
+        description: "Prowadzenie własnej działalności w zakresie transportu międzynarodowego.",
         achievements: [
-          "Zbudowanie firmy od zera do stałej bazy 50+ klientów",
-          "Zarządzanie flotą 5 pojazdów ciężkich",
-          "Wzrost obrotów o 200% w ciągu pierwszych 3 lat",
-          "Implementacja systemu GPS tracking i optymalizacji tras",
-          "Rozwój długoterminowych partnerstw biznesowych"
+          "Współpraca z DHL, Baltershwiller, OHL Cargo, Flex, Migolog",
+          "Optymalizacja kosztów i tras",
+          "Budowa stabilnej sieci klientów"
+        ]
+      },
+      fg_falke: {
+        title: "Udziałowiec mniejszościowy – consulting/doradztwo",
+        period: "12.2020 – obecnie",
+        company: "FG Falke sp. z o.o.",
+        location: "Polska",
+        description: "Doradztwo operacyjne i finansowe, procesy, projekty IT, automatyzacje i integracje AI.",
+        achievements: [
+          "Rozwój usług consultingowych",
+          "Współpraca w branży transport/logistyka",
+          "Implementacja nowych technologii AI i automatyzacji"
         ]
       },
       early_driver: {
-        title: "Kierowca zawodowy",
-        period: "2015 - 2019",
-        company: "Various Transport Companies",
-        location: "Polska / Europa",
-        description: "Początki kariery w branży transportowej. Zdobywanie doświadczenia w różnych typach przewozów - od transportu krajowego po międzynarodowy.",
+        title: "Kierowca Stückgut",
+        period: "2020 – 2022",
+        company: "Fiege Logistik (Oftringen, CH)",
+        location: "Szwajcaria",
+        description: "Dystrybucja drobnicowa, planowanie tras, obsługa klienta.",
         achievements: [
-          "Nauka obsługi różnych typów ładunków (ADR, cargo specjalne)",
-          "Budowanie wiedzy o branży transportowej w Europie",
-          "Rozwój umiejętności zawodowych i interpersonalnych",
-          "Certyfikaty BHP i bezpiecznej jazdy",
-          "Pierwsze kontakty międzynarodowe"
+          "Efektywna obsługa dostaw lokalnych",
+          "Wdrożenie systemu skanowania przesyłek",
+          "Wysoki poziom satysfakcji klientów"
         ]
       }
     },
@@ -401,7 +408,7 @@ export const translations: Record<Language, Translation> = {
     education_data: {
       master: {
         title: "Studia magisterskie - Finanse i rachunkowość",
-        institution: "Uniwersytet Ekonomiczny",
+        institution: "Wyższa Szkoła Biznesu w Dąbrowie Górniczej",
         period: "2023-2025",
         status: "W trakcie - ostatni semestr",
         description: "Pogłębianie wiedzy z zakresu zarządzania finansami, analizy ekonomicznej, rachunkowości zarządczej i kontrolingu.",
@@ -415,7 +422,7 @@ export const translations: Record<Language, Translation> = {
       },
       engineer: {
         title: "Inżynier zarządzania procesami logistycznymi",
-        institution: "Politechnika Warszawska",
+        institution: "Wyższa Szkoła Biznesu w Dąbrowie Górniczej – Oddział w Krakowie",
         period: "2018-2022",
         status: "Ukończone",
         description: "Specjalizacja w logistyce. Optymalizacja procesów, zarządzanie łańcuchem dostaw, systemy transportowe i magazynowe.",
@@ -433,9 +440,136 @@ export const translations: Record<Language, Translation> = {
     ui_achievements_title: "Kluczowe osiągnięcia",
     ui_key_subjects_title: "Kluczowe przedmioty:",
     
+    // EducationPage learning stats
+    education_learning_stats: [
+      { label: "Ukończone kursy online", value: "20+", icon: "fa-graduation-cap" },
+      { label: "Godziny nauki rocznie", value: "200+", icon: "fa-clock" },
+      { label: "Certyfikaty branżowe", value: "5", icon: "fa-certificate" },
+      { label: "Księgi przeczytane", value: "25+", icon: "fa-book" }
+    ],
+    
+    // EducationPage certifications
+    education_certifications: [
+      {
+        name: "CKZ Transport osób i rzeczy (unijny)",
+        issuer: "CKZ",
+        date: "2016",
+        valid: true,
+        icon: "fa-bus"
+      },
+      {
+        name: "Dyplom Inżyniera Zarządzania Procesami Logistycznymi",
+        issuer: "Wyższa Szkoła Biznesu",
+        date: "2021",
+        valid: true,
+        icon: "fa-graduation-cap"
+      },
+      {
+        name: "Certyfikat Web Coders Full Stack Developer",
+        issuer: "Web Coders",
+        date: "2021",
+        valid: true,
+        icon: "fa-code"
+      },
+      {
+        name: "Java Developer",
+        issuer: "Web Coders",
+        date: "2022",
+        valid: true,
+        icon: "fa-coffee"
+      },
+      {
+        name: "Certyfikat Goethe-Institut B2 (Rozwój języka niemieckiego)",
+        issuer: "Goethe-Institut",
+        date: "2024",
+        valid: true,
+        icon: "fa-language"
+      }
+    ],
+    
+    // EducationPage technical skills
+    education_technical_skills: [
+      { 
+        category: "Web Development", 
+        skills: [
+          { name: "React/Next.js", level: 80 },
+          { name: "TypeScript", level: 75 },
+          { name: "Node.js", level: 70 },
+          { name: "CSS/Tailwind", level: 85 }
+        ]
+      },
+      { 
+        category: "Logistyka & Transport", 
+        skills: [
+          { name: "Planowanie tras", level: 95 },
+          { name: "TMS Systems", level: 90 },
+          { name: "GPS/Telemetria", level: 88 },
+          { name: "Lean Management", level: 82 }
+        ]
+      },
+      { 
+        category: "Finanse & Analityka", 
+        skills: [
+          { name: "Excel Advanced", level: 95 },
+          { name: "Power BI", level: 78 },
+          { name: "SQL", level: 70 },
+          { name: "Financial Modeling", level: 85 }
+        ]
+      },
+      { 
+        category: "Języki", 
+        skills: [
+          { name: "Polski", level: 100 },
+          { name: "Niemiecki", level: 85 },
+          { name: "Angielski", level: 80 }
+        ]
+      }
+    ],
+    
+    // EducationPage continuous learning
+    education_continuous_learning: {
+      online_courses: {
+        title: "Kursy online i szkolenia",
+        items: [
+          "Coursera - Machine Learning Specialization",
+          "Udemy - Advanced React Development",
+          "LinkedIn Learning - Leadership Skills",
+          "YouTube Tech Channels - Daily Learning"
+        ]
+      },
+      conferences: {
+        title: "Konferencje i branżowe wydarzenia",
+        items: [
+          "TransLogistica 2023 - Kielce",
+          "React Summit 2024",
+          "Logistic Summit Poland",
+          "AI in Business Conference"
+        ]
+      },
+      projects: {
+        title: "Własne projekty i eksperymenty",
+        items: [
+          "Transport route optimization AI",
+          "Personal finance tracking app",
+          "IoT sensors for fleet monitoring",
+          "Blockchain supply chain prototype"
+        ]
+      },
+      personal: {
+        title: "Projekty osobiste i pasje",
+        items: [
+          "Rozwój własnej firmy transportowej",
+          "Eksperymenty z Flipper Zero i IoT",
+          "Automatyzacje n8n i Make do codziennych zadań",
+          "Optymalizacja procesów logistycznych w praktyce",
+          "Testy i użytkowanie samochodu Tesla (elektromobilność)"
+        ]
+      }
+    },
+    
     // Footer
     footer_quick_links: "Szybkie linki",
-    footer_copyright: "© 2024 Mariusz Sokołowski. Wszystkie prawa zastrzeżone.",
+    footer_copyright: "© 2025 Mariusz Sokołowski. Wszystkie prawa zastrzeżone.",
     
     // NotFound page
     notfound_need_help: "Potrzebujesz pomocy?",
@@ -642,6 +776,7 @@ export const translations: Record<Language, Translation> = {
     services_pricing_subtitle: "Wählen Sie ein Paket, das zu Ihren Bedürfnissen passt",
     services_cta_title: "Sehen Sie nicht die richtige Dienstleistung?",
     services_cta_subtitle: "Kontaktieren Sie mich, um eine individuelle Lösung zu besprechen, die auf Ihre Bedürfnisse zugeschnitten ist.",
+    services_webdev_info: "Web Development - einfache Info-Seite ab 499 CHF mit jährlichem Deployment!",
     services_cta_contact: "Kontakt aufnehmen",
     services_cta_about: "Lernen Sie mich besser kennen",
     services_learn_more: "Mehr erfahren",
@@ -796,45 +931,51 @@ export const translations: Record<Language, Translation> = {
     // ExperiencePage specific
     experience_data: {
       current_swiss: {
-        title: "CE-Fahrer - Internationaler Transport",
-        period: "2019 - aktuell",
-        company: "Swiss Transport Company",
+        title: "CE-Fahrer",
+        period: "09.2022 – aktuell",
+        company: "Coop Schweiz (Schafisheim, CH)",
         location: "Schweiz",
-        description: "Professionelle Abwicklung des internationalen Transports bei einem führenden Schweizer Unternehmen. Verantwortung für sichere und pünktliche Lieferungen in ganz Europa.",
+        description: "Warenverteilung in der Schweiz, Einhaltung der CH/EU-Vorschriften, Tachograph-Bedienung.",
         achievements: [
-          "Über 500.000 km ohne Unfälle gefahren",
-          "Premium-Kundenbetreuung mit 98% Zufriedenheit",
-          "Routenoptimierung mit 15% Kraftstoffeinsparung",
-          "Mentoring neuer Fahrer - Schulung von 12 Personen",
-          "Verbesserung der Sprachkenntnisse (Deutsch, Englisch)"
+          "Lieferpünktlichkeit > 98%",
+          "Sichere Fahrweise – keine Schäden",
+          "Routenoptimierung in Bergbedingungen"
         ]
       },
       business_owner: {
         title: "Transportunternehmer",
-        period: "2017 - aktuell",
-        company: "MST Transport",
-        location: "Polen",
-        description: "Gründer und Eigentümer eines Transportunternehmens, das sich auf nationale und internationale Transporte spezialisiert. Management aller Geschäftsaspekte von der Planung bis zur Umsetzung.",
+        period: "01.2018 – aktuell",
+        company: "Eigener Transport (PL–DE–CH)",
+        location: "Polen / Deutschland / Schweiz",
+        description: "Führung einer eigenen Tätigkeit im Bereich internationaler Transporte.",
         achievements: [
-          "Aufbau des Unternehmens von null auf stabile Basis von 50+ Kunden",
-          "Management einer Flotte von 5 schweren Fahrzeugen",
-          "Umsatzwachstum von 200% in den ersten 3 Jahren",
-          "Implementierung von GPS-Tracking und Routenoptimierung",
-          "Entwicklung langfristiger Geschäftspartnerschaften"
+          "Zusammenarbeit mit DHL, Baltershwiller, OHL Cargo, Flex, Migolog",
+          "Kosten- und Routenoptimierung",
+          "Aufbau eines stabilen Kundenstamms"
+        ]
+      },
+      fg_falke: {
+        title: "Minderheitsgesellschafter – Consulting/Beratung",
+        period: "12.2020 – aktuell",
+        company: "FG Falke sp. z o.o.",
+        location: "Polen",
+        description: "Operative und finanzielle Beratung, Prozesse, IT-Projekte, Automatisierungen und AI-Integrationen.",
+        achievements: [
+          "Entwicklung von Consulting-Dienstleistungen",
+          "Zusammenarbeit in der Transport/Logistik-Branche",
+          "Implementierung neuer AI- und Automatisierungstechnologien"
         ]
       },
       early_driver: {
-        title: "Berufsfahrer",
-        period: "2015 - 2019",
-        company: "Verschiedene Transportunternehmen",
-        location: "Polen / Europa",
-        description: "Anfang der Karriere in der Transportbranche. Erfahrungssammlung in verschiedenen Transportarten - vom nationalen bis zum internationalen Transport.",
+        title: "Stückgut-Fahrer",
+        period: "2020 – 2022",
+        company: "Fiege Logistik (Oftringen, CH)",
+        location: "Schweiz",
+        description: "Stückgutverteilung, Routenplanung, Kundenbetreuung.",
         achievements: [
-          "Lernen der Handhabung verschiedener Ladungstypen (ADR, Spezialladung)",
-          "Aufbau von Wissen über die Transportbranche in Europa",
-          "Entwicklung beruflicher und zwischenmenschlicher Fähigkeiten",
-          "BHP- und Sicherheitsfahrzeug-Zertifikate",
-          "Erste internationale Kontakte"
+          "Effiziente Abwicklung lokaler Lieferungen",
+          "Einführung eines Sendungsscanningsystems",
+          "Hohes Maß an Kundenzufriedenheit"
         ]
       }
     },
@@ -843,7 +984,7 @@ export const translations: Record<Language, Translation> = {
     education_data: {
       master: {
         title: "Masterstudium - Finanzen und Rechnungswesen",
-        institution: "Wirtschaftsuniversität",
+        institution: "Hochschule für Wirtschaft in Dąbrowa Górnicza",
         period: "2023-2025",
         status: "In Bearbeitung - letztes Semester",
         description: "Vertiefung der Kenntnisse in Finanzmanagement, Wirtschaftsanalyse, Management Accounting und Controlling.",
@@ -857,7 +998,7 @@ export const translations: Record<Language, Translation> = {
       },
       engineer: {
         title: "Ingenieur für Logistikprozessmanagement",
-        institution: "Technische Universität Warschau",
+        institution: "Hochschule für Wirtschaft in Dąbrowa Górnicza – Zweigstelle Krakau",
         period: "2018-2022",
         status: "Abgeschlossen",
         description: "Spezialisierung in Logistik. Prozessoptimierung, Supply Chain Management, Transport- und Lagersysteme.",
@@ -875,9 +1016,136 @@ export const translations: Record<Language, Translation> = {
     ui_achievements_title: "Wichtigste Erfolge",
     ui_key_subjects_title: "Schlüsselfächer:",
     
+    // EducationPage learning stats
+    education_learning_stats: [
+      { label: "Abgeschlossene Online-Kurse", value: "20+", icon: "fa-graduation-cap" },
+      { label: "Lernstunden pro Jahr", value: "200+", icon: "fa-clock" },
+      { label: "Branchenzertifikate", value: "5", icon: "fa-certificate" },
+      { label: "Gelesene Bücher", value: "25+", icon: "fa-book" }
+    ],
+    
+    // EducationPage certifications
+    education_certifications: [
+      {
+        name: "CKZ Transport von Personen und Gütern (EU)",
+        issuer: "CKZ",
+        date: "2016",
+        valid: true,
+        icon: "fa-bus"
+      },
+      {
+        name: "Diplom Ingenieur für Logistikprozessmanagement",
+        issuer: "Hochschule für Wirtschaft",
+        date: "2021",
+        valid: true,
+        icon: "fa-graduation-cap"
+      },
+      {
+        name: "Web Coders Full Stack Developer Zertifikat",
+        issuer: "Web Coders",
+        date: "2021",
+        valid: true,
+        icon: "fa-code"
+      },
+      {
+        name: "Java Developer",
+        issuer: "Web Coders",
+        date: "2022",
+        valid: true,
+        icon: "fa-coffee"
+      },
+      {
+        name: "Goethe-Institut B2 Zertifikat (Deutschsprachige Entwicklung)",
+        issuer: "Goethe-Institut",
+        date: "2024",
+        valid: true,
+        icon: "fa-language"
+      }
+    ],
+    
+    // EducationPage technical skills
+    education_technical_skills: [
+      { 
+        category: "Web Development", 
+        skills: [
+          { name: "React/Next.js", level: 80 },
+          { name: "TypeScript", level: 75 },
+          { name: "Node.js", level: 70 },
+          { name: "CSS/Tailwind", level: 85 }
+        ]
+      },
+      { 
+        category: "Logistik & Transport", 
+        skills: [
+          { name: "Routenplanung", level: 95 },
+          { name: "TMS-Systeme", level: 90 },
+          { name: "GPS/Telemetrie", level: 88 },
+          { name: "Lean Management", level: 82 }
+        ]
+      },
+      { 
+        category: "Finanzen & Analytik", 
+        skills: [
+          { name: "Excel Advanced", level: 95 },
+          { name: "Power BI", level: 78 },
+          { name: "SQL", level: 70 },
+          { name: "Financial Modeling", level: 85 }
+        ]
+      },
+      { 
+        category: "Sprachen", 
+        skills: [
+          { name: "Polnisch", level: 100 },
+          { name: "Deutsch", level: 85 },
+          { name: "Englisch", level: 80 }
+        ]
+      }
+    ],
+    
+    // EducationPage continuous learning
+    education_continuous_learning: {
+      online_courses: {
+        title: "Online-Kurse und Schulungen",
+        items: [
+          "Coursera - Machine Learning Specialization",
+          "Udemy - Advanced React Development",
+          "LinkedIn Learning - Leadership Skills",
+          "YouTube Tech Channels - Daily Learning"
+        ]
+      },
+      conferences: {
+        title: "Konferenzen und Branchenveranstaltungen",
+        items: [
+          "TransLogistica 2023 - Kielce",
+          "React Summit 2024",
+          "Logistic Summit Poland",
+          "AI in Business Conference"
+        ]
+      },
+      projects: {
+        title: "Eigene Projekte und Experimente",
+        items: [
+          "Transport route optimization AI",
+          "Personal finance tracking app",
+          "IoT sensors for fleet monitoring",
+          "Blockchain supply chain prototype"
+        ]
+      },
+      personal: {
+        title: "Persönliche Projekte und Leidenschaften",
+        items: [
+          "Entwicklung des eigenen Transportunternehmens",
+          "Experimente mit Flipper Zero und IoT",
+          "n8n und Make Automatisierungen für tägliche Aufgaben",
+          "Optimierung logistischer Prozesse in der Praxis",
+          "Tests und Nutzung des Tesla-Autos (Elektromobilität)"
+        ]
+      }
+    },
+    
     // Footer
     footer_quick_links: "Schnelle Links",
-    footer_copyright: "© 2024 Mariusz Sokołowski. Alle Rechte vorbehalten.",
+    footer_copyright: "© 2025 Mariusz Sokołowski. Alle Rechte vorbehalten.",
     
     // NotFound page
     notfound_need_help: "Brauchen Sie Hilfe?",
