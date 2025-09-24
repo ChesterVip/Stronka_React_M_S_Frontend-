@@ -5,7 +5,6 @@ import AnimatedSection from '@/components/ui/AnimatedSection'
 import Timeline from '@/components/ui/Timeline'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card'
 import Button from '@/components/ui/Button'
-import SEO, { pageConfigs } from '@/components/SEO'
 
 const ExperiencePage = () => {
   const { t } = useLanguage()
@@ -194,7 +193,7 @@ const ExperiencePage = () => {
           {activeView === 'skills' && (
             <AnimatedSection animation="fade-in" key="skills">
               <div className="grid md:grid-cols-2 gap-8">
-                {skillsData.map((category, index) => (
+                {skillsData.map((category) => (
                   <Card key={category.category} variant="gradient" hover="glow">
                     <CardHeader>
                       <CardTitle className="text-xl flex items-center">

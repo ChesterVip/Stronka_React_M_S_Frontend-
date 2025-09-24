@@ -334,7 +334,7 @@ const NotFoundPage = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-2">
-                  {popularPages.map((page, index) => (
+                  {popularPages.map((page) => (
                     <button
                       key={page.path}
                       onClick={() => handleRedirect(page.path)}

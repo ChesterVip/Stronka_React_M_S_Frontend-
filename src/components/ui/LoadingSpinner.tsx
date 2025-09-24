@@ -1,9 +1,6 @@
 import { HTMLAttributes } from 'react'
 import { cn } from '@/utils/cn'
 
-// Temporary type until class-variance-authority is installed
-type VariantProps<T> = T
-
 // Temporary implementation until class-variance-authority is installed
 const spinnerVariants = (props: any) => {
   const baseClasses = "animate-spin rounded-full border-2 border-current border-t-transparent"
@@ -24,15 +21,16 @@ const spinnerVariants = (props: any) => {
   
   return cn(
     baseClasses,
-    sizeClasses[props.size || 'md'],
-    colorClasses[props.color || 'gold'],
+    sizeClasses[props.size as keyof typeof sizeClasses] || sizeClasses.md,
+    colorClasses[props.color as keyof typeof colorClasses] || colorClasses.gold,
     props.className
   )
 }
 
 interface LoadingSpinnerProps 
-  extends HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof spinnerVariants> {
+  extends HTMLAttributes<HTMLDivElement> {
+  size?: 'sm' | 'md' | 'lg' | 'xl'
+  color?: 'gold' | 'white' | 'gray' | 'blue' | 'green' | 'red'
   label?: string
 }
 

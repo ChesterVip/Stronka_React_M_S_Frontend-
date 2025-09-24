@@ -1,9 +1,6 @@
 import { ButtonHTMLAttributes, ReactNode } from 'react'
 import { cn } from '@/utils/cn'
 
-// Temporary type until class-variance-authority is installed
-type VariantProps<T> = T
-
 // Temporary implementation until class-variance-authority is installed
 const buttonVariants = (props: any) => {
   const baseClasses = "inline-flex items-center justify-center rounded-xl font-bold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none transform hover:scale-105"
@@ -24,8 +21,8 @@ const buttonVariants = (props: any) => {
   
   return cn(
     baseClasses,
-    variantClasses[props.variant || 'gold'],
-    sizeClasses[props.size || 'md'],
+    variantClasses[props.variant as keyof typeof variantClasses] || variantClasses.gold,
+    sizeClasses[props.size as keyof typeof sizeClasses] || sizeClasses.md,
     props.className
   )
 }

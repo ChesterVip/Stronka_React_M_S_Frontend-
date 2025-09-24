@@ -77,10 +77,9 @@ const ContactPage = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid, isDirty },
+    formState: { errors, isValid },
     watch,
-    reset,
-    trigger
+    reset
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
     mode: 'onChange',
@@ -663,7 +662,7 @@ const ContactPage = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  {responseTimeInfo.map((info, index) => {
+                  {responseTimeInfo.map((info) => {
                     const category = categories.find(c => c.id === info.category)
                     const isSelected = watchedCategory === info.category
                     

@@ -79,7 +79,7 @@ const Layout = () => {
                     )}
                   >
                     <i className={cn("fas", icon, "text-sm")} />
-                    <span>{t[key as keyof typeof t]}</span>
+                    <span>{String(t[key as keyof typeof t])}</span>
                   </button>
                 ))}
               </div>
@@ -146,7 +146,7 @@ const Layout = () => {
                 )}
               >
                 <i className={cn("fas", icon, "w-5 text-center")} />
-                <span>{t[key as keyof typeof t]}</span>
+                <span>{String(t[key as keyof typeof t])}</span>
               </button>
             ))}
           </div>
@@ -183,7 +183,7 @@ const Layout = () => {
                     onClick={() => navigate(path)}
                     className="block text-gray-400 hover:text-gold-400 transition-colors duration-300"
                   >
-                    {t[key as keyof typeof t]}
+                    {String(t[key as keyof typeof t])}
                   </button>
                 ))}
               </div>

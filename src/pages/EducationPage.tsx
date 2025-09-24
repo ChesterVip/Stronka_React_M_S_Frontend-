@@ -168,7 +168,7 @@ const EducationPage = () => {
           {activeTab === 'formal' && (
             <AnimatedSection animation="fade-in" key="formal">
               <div className="space-y-12">
-                {formalEducation.map((edu, index) => (
+                {formalEducation.map((edu) => (
                   <Card key={edu.id} variant="gradient" hover="glow" className="overflow-hidden">
                     <div className="grid lg:grid-cols-3 gap-6">
                       
