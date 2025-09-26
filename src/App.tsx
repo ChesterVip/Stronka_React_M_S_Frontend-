@@ -1,6 +1,7 @@
 import { RouterProvider } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useLanguage } from '@/hooks/useLanguage'
+import { AuthProvider } from '@/hooks/useAuth'
 import router from '@/router'
 
 function App() {
@@ -12,7 +13,11 @@ function App() {
     console.log('📱 Network-adaptive loading enabled')
   }, [language])
 
-  return <RouterProvider router={router} />
+  return (
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+  )
 }
 
 export default App

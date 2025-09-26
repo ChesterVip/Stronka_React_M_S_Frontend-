@@ -466,6 +466,53 @@ export interface Translation {
   notfound_need_help: string;
   notfound_contact_description: string;
   notfound_contact_form: string;
+  
+  // Login Required Pages
+  login_required: {
+    default: {
+      title: string;
+      subtitle: string;
+      description: string;
+    };
+    experience: {
+      title: string;
+      subtitle: string;
+      description: string;
+    };
+    education: {
+      title: string;
+      subtitle: string;
+      description: string;
+    };
+    tech: {
+      title: string;
+      subtitle: string;
+      description: string;
+    };
+    features: {
+      security: {
+        title: string;
+        description: string;
+      };
+      exclusive: {
+        title: string;
+        description: string;
+      };
+      personalization: {
+        title: string;
+        description: string;
+      };
+    };
+    cta: {
+      title: string;
+      subtitle: string;
+      login_btn: string;
+      register_btn: string;
+      test_account: string;
+      test_email: string;
+      test_password: string;
+    };
+  };
 }
 
 // Contact form

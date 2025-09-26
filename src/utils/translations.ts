@@ -574,7 +574,54 @@ export const translations: Record<Language, Translation> = {
     // NotFound page
     notfound_need_help: "Potrzebujesz pomocy?",
     notfound_contact_description: "Jeśli nadal masz problemy z nawigacją, skontaktuj się ze mną bezpośrednio.",
-    notfound_contact_form: "Formularz kontaktowy"
+    notfound_contact_form: "Formularz kontaktowy",
+    
+    // Login Required Pages
+    login_required: {
+      default: {
+        title: "🔒 Dostęp ograniczony",
+        subtitle: "Ta sekcja wymaga logowania",
+        description: "Zaloguj się, aby uzyskać dostęp do ekskluzywnej zawartości i funkcji."
+      },
+      experience: {
+        title: "💼 Ekskluzywne doświadczenie",
+        subtitle: "Dostęp do szczegółów kariery wymaga logowania",
+        description: "Odkryj pełną historię mojej kariery zawodowej, szczegółowe osiągnięcia i projekty, które realizowałem w różnych firmach i branżach."
+      },
+      education: {
+        title: "🎓 Tajniki edukacji",
+        subtitle: "Szczegóły wykształcenia dostępne po zalogowaniu",
+        description: "Poznaj moją ścieżkę edukacyjną, certyfikaty, kursy i ciągłe doskonalenie zawodowe, które kształtują moje kompetencje."
+      },
+      tech: {
+        title: "⚡ Arsenal technologiczny",
+        subtitle: "Pełny stack technologiczny tylko dla zalogowanych",
+        description: "Odkryj kompletny zestaw technologii, narzędzi i umiejętności, które wykorzystuję w projektach oraz moje doświadczenie z różnymi technologiami."
+      },
+      features: {
+        security: {
+          title: "Bezpieczny dostęp",
+          description: "Twoje dane są chronione najwyższymi standardami bezpieczeństwa"
+        },
+        exclusive: {
+          title: "Ekskluzywna zawartość",
+          description: "Dostęp do specjalnych treści dostępnych tylko dla zalogowanych użytkowników"
+        },
+        personalization: {
+          title: "Personalizacja",
+          description: "Dostosuj doświadczenie do swoich potrzeb i preferencji"
+        }
+      },
+      cta: {
+        title: "Gotowy na ekskluzywne doświadczenie?",
+        subtitle: "Zaloguj się już teraz i odkryj pełny potencjał tej platformy",
+        login_btn: "Zaloguj się",
+        register_btn: "Zarejestruj się",
+        test_account: "🧪 Testowe konto:",
+        test_email: "Email: admin@mariusz-sokolowski.ch",
+        test_password: "Hasło: passADMIN123"
+      }
+    }
   },
   
   de: {
@@ -1150,6 +1197,53 @@ export const translations: Record<Language, Translation> = {
     // NotFound page
     notfound_need_help: "Brauchen Sie Hilfe?",
     notfound_contact_description: "Wenn Sie weiterhin Navigationsprobleme haben, kontaktieren Sie mich direkt.",
-    notfound_contact_form: "Kontaktformular"
+    notfound_contact_form: "Kontaktformular",
+    
+    // Login Required Pages
+    login_required: {
+      default: {
+        title: "🔒 Zugang beschränkt",
+        subtitle: "Dieser Bereich erfordert eine Anmeldung",
+        description: "Melden Sie sich an, um Zugang zu exklusiven Inhalten und Funktionen zu erhalten."
+      },
+      experience: {
+        title: "💼 Exklusive Erfahrung",
+        subtitle: "Zugang zu Karrieredetails erfordert Anmeldung",
+        description: "Entdecken Sie die vollständige Geschichte meiner beruflichen Laufbahn, detaillierte Erfolge und Projekte, die ich in verschiedenen Unternehmen und Branchen realisiert habe."
+      },
+      education: {
+        title: "🎓 Bildungsgeheimnisse",
+        subtitle: "Bildungsdetails nach Anmeldung verfügbar",
+        description: "Lernen Sie meinen Bildungsweg, Zertifikate, Kurse und kontinuierliche berufliche Weiterentwicklung kennen, die meine Kompetenzen prägen."
+      },
+      tech: {
+        title: "⚡ Technologisches Arsenal",
+        subtitle: "Vollständiger Tech-Stack nur für angemeldete Benutzer",
+        description: "Entdecken Sie das komplette Set von Technologien, Tools und Fähigkeiten, die ich in Projekten einsetze, sowie meine Erfahrung mit verschiedenen Technologien."
+      },
+      features: {
+        security: {
+          title: "Sicherer Zugang",
+          description: "Ihre Daten sind durch höchste Sicherheitsstandards geschützt"
+        },
+        exclusive: {
+          title: "Exklusive Inhalte",
+          description: "Zugang zu speziellen Inhalten, die nur für angemeldete Benutzer verfügbar sind"
+        },
+        personalization: {
+          title: "Personalisierung",
+          description: "Passen Sie die Erfahrung an Ihre Bedürfnisse und Präferenzen an"
+        }
+      },
+      cta: {
+        title: "Bereit für eine exklusive Erfahrung?",
+        subtitle: "Melden Sie sich jetzt an und entdecken Sie das volle Potenzial dieser Plattform",
+        login_btn: "Anmelden",
+        register_btn: "Registrieren",
+        test_account: "🧪 Testkonto:",
+        test_email: "E-Mail: admin@mariusz-sokolowski.ch",
+        test_password: "Passwort: passADMIN123"
+      }
+    }
   }
 };

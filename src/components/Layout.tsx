@@ -1,6 +1,7 @@
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { useLanguage } from '@/hooks/useLanguage'
+import { useAuth } from '@/hooks/useAuth'
 import { useScrollDirection } from '@/hooks/useScrollAnimation'
 import Notification from '@/components/Notification'
 import PageTransition from '@/components/PageTransition'
@@ -10,6 +11,7 @@ const Layout = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const { language, setLanguage, t } = useLanguage()
+  const { user, isAuthenticated, logout } = useAuth()
   const location = useLocation()
   const navigate = useNavigate()
   const scrollDirection = useScrollDirection()
@@ -65,23 +67,96 @@ const Layout = () => {
             </button>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
+            <div className="hidden lg:block">
+              <div className="ml-6 flex items-center space-x-2">
                 {navigationItems.map(({ key, path, icon }) => (
                   <button
                     key={key}
                     onClick={() => navigate(path)}
                     className={cn(
-                      "nav-link px-3 py-2 rounded-lg font-medium transition-all duration-300 flex items-center space-x-2",
+                      "nav-link px-2 py-1.5 rounded-md text-sm font-medium transition-all duration-300 flex items-center space-x-1.5",
                       isActiveRoute(path)
                         ? "text-gold-400 bg-gold-500/10"
                         : "text-gray-300 hover:text-white hover:bg-gray-800/50"
                     )}
                   >
-                    <i className={cn("fas", icon, "text-sm")} />
-                    <span>{String(t[key as keyof typeof t])}</span>
+                    <i className={cn("fas", icon, "text-xs")} />
+                    <span className="text-xs">{String(t[key as keyof typeof t])}</span>
                   </button>
                 ))}
+                
+                {/* Auth Button - Desktop */}
+                <div className="ml-3 pl-3 border-l border-gray-600">
+                  {isAuthenticated ? (
+                    <div className="flex items-center space-x-2">
+                      <div className="text-right">
+                        <div className="text-xs text-gray-300 font-medium">
+                          {user?.firstName} {user?.lastName}
+                        </div>
+                        <div className="text-xs text-gray-500">
+                          {user?.role === 'admin' ? 'Admin' : 'User'}
+                        </div>
+                      </div>
+                      <button
+                        onClick={logout}
+                        className="group relative px-3 py-1.5 bg-gradient-to-r from-red-500/20 to-red-600/20 hover:from-red-500/30 hover:to-red-600/30 border border-red-500/30 hover:border-red-500/50 text-red-400 hover:text-red-300 rounded-md text-xs font-medium transition-all duration-300 hover:scale-105"
+                      >
+                        <i className="fas fa-sign-out-alt mr-1 group-hover:rotate-12 transition-transform duration-300" />
+                        Wyloguj
+                      </button>
+                    </div>
+                  ) : (
+                    <button
+                      onClick={() => navigate('/login')}
+                      className="group relative px-4 py-1.5 bg-gradient-to-r from-gold-500/20 to-gold-600/20 hover:from-gold-500/30 hover:to-gold-600/30 border border-gold-500/30 hover:border-gold-500/50 text-gold-400 hover:text-gold-300 rounded-md text-xs font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-gold-500/20"
+                    >
+                      <i className="fas fa-user-circle mr-1 group-hover:scale-110 transition-transform duration-300" />
+                      Zaloguj
+                    </button>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* Tablet Navigation */}
+            <div className="hidden md:block lg:hidden">
+              <div className="ml-4 flex items-center space-x-1">
+                {navigationItems.slice(0, 4).map(({ key, path, icon }) => (
+                  <button
+                    key={key}
+                    onClick={() => navigate(path)}
+                    className={cn(
+                      "nav-link px-2 py-1 rounded text-xs font-medium transition-all duration-300 flex items-center space-x-1",
+                      isActiveRoute(path)
+                        ? "text-gold-400 bg-gold-500/10"
+                        : "text-gray-300 hover:text-white hover:bg-gray-800/50"
+                    )}
+                  >
+                    <i className={cn("fas", icon, "text-xs")} />
+                    <span className="text-xs">{String(t[key as keyof typeof t])}</span>
+                  </button>
+                ))}
+                
+                {/* Auth Button - Tablet */}
+                <div className="ml-2 pl-2 border-l border-gray-600">
+                  {isAuthenticated ? (
+                    <button
+                      onClick={logout}
+                      className="px-2 py-1 bg-red-500/20 hover:bg-red-500/30 border border-red-500/30 text-red-400 hover:text-red-300 rounded text-xs font-medium transition-all duration-300"
+                    >
+                      <i className="fas fa-sign-out-alt mr-1" />
+                      Wyloguj
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => navigate('/login')}
+                      className="px-3 py-1 bg-gold-500/20 hover:bg-gold-500/30 border border-gold-500/30 text-gold-400 hover:text-gold-300 rounded text-xs font-medium transition-all duration-300"
+                    >
+                      <i className="fas fa-user-circle mr-1" />
+                      Zaloguj
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
 
@@ -149,6 +224,37 @@ const Layout = () => {
                 <span>{String(t[key as keyof typeof t])}</span>
               </button>
             ))}
+            
+            {/* Mobile Auth Section */}
+            <div className="mt-4 pt-4 border-t border-gray-700">
+              {isAuthenticated ? (
+                <div className="px-3 py-2 space-y-2">
+                  <div className="text-center">
+                    <div className="text-sm text-gray-300 font-medium">
+                      {user?.firstName} {user?.lastName}
+                    </div>
+                    <div className="text-xs text-gray-500">
+                      {user?.role === 'admin' ? 'Administrator' : 'Użytkownik'}
+                    </div>
+                  </div>
+                  <button
+                    onClick={logout}
+                    className="w-full px-4 py-3 bg-gradient-to-r from-red-500/20 to-red-600/20 hover:from-red-500/30 hover:to-red-600/30 border border-red-500/30 hover:border-red-500/50 text-red-400 hover:text-red-300 rounded-lg font-medium transition-all duration-300 flex items-center justify-center space-x-2"
+                  >
+                    <i className="fas fa-sign-out-alt" />
+                    <span>Wyloguj się</span>
+                  </button>
+                </div>
+              ) : (
+                <button
+                  onClick={() => navigate('/login')}
+                  className="w-full mx-3 px-4 py-3 bg-gradient-to-r from-gold-500/20 to-gold-600/20 hover:from-gold-500/30 hover:to-gold-600/30 border border-gold-500/30 hover:border-gold-500/50 text-gold-400 hover:text-gold-300 rounded-lg font-medium transition-all duration-300 flex items-center justify-center space-x-2 hover:shadow-lg hover:shadow-gold-500/20"
+                >
+                  <i className="fas fa-user-circle" />
+                  <span>Zaloguj się</span>
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </nav>

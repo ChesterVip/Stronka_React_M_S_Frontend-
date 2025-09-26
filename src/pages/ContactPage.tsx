@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { useLanguage } from '@/hooks/useLanguage'
+import { useAuth } from '@/hooks/useAuth'
 import { useNavigate } from 'react-router-dom'
 import AnimatedSection from '@/components/ui/AnimatedSection'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card'
@@ -68,11 +69,11 @@ type ContactFormData = z.infer<typeof contactSchema>
 
 const ContactPage = () => {
   const { t } = useLanguage()
+  const { isAuthenticated } = useAuth()
   const navigate = useNavigate()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [submitMessage, setSubmitMessage] = useState('')
-  const [isLoggedIn, setIsLoggedIn] = useState(false) // Mock - później będzie z systemu autoryzacji
   
   const {
     register,
@@ -142,8 +143,8 @@ const ContactPage = () => {
       icon: 'fa-envelope',
       iconClass: 'fas',
       label: t.email_label,
-      value: isLoggedIn ? 'mariusz.sokolowski@fgfalke.eu' : '***@***.***',
-      link: isLoggedIn ? 'mailto:mariusz.sokolowski@fgfalke.eu' : null,
+      value: isAuthenticated ? 'mariusz.sokolowski@fgfalke.eu' : '***@***.***',
+      link: isAuthenticated ? 'mailto:mariusz.sokolowski@fgfalke.eu' : null,
       color: 'text-blue-400',
       requiresAuth: true
     },
@@ -151,8 +152,8 @@ const ContactPage = () => {
       icon: 'fa-phone',
       iconClass: 'fas',
       label: t.phone_label,
-      value: isLoggedIn ? '+41 76 237 33 01' : '+41 *** *** ***',
-      link: isLoggedIn ? 'tel:+41762373301' : null,
+      value: isAuthenticated ? '+41 76 237 33 01' : '+41 *** *** ***',
+      link: isAuthenticated ? 'tel:+41762373301' : null,
       color: 'text-green-400',
       requiresAuth: true
     },
@@ -237,15 +238,6 @@ const ContactPage = () => {
             <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
               {t.contact_page_subtitle}
             </p>
-            {/* Temporary login button for testing */}
-            <div className="mt-4">
-              <button
-                onClick={() => setIsLoggedIn(!isLoggedIn)}
-                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
-              >
-                {isLoggedIn ? 'Wyloguj się' : 'Zaloguj się'} (Test)
-              </button>
-            </div>
           </div>
         </AnimatedSection>
 
@@ -636,7 +628,7 @@ const ContactPage = () => {
                         ) : (
                           <div className="text-white">{info.value}</div>
                         )}
-                        {info.requiresAuth && !isLoggedIn && (
+                        {info.requiresAuth && !isAuthenticated && (
                           <div className="text-xs text-gray-500 mt-1">
                             <i className="fas fa-lock mr-1"></i>
                             Wymaga logowania
