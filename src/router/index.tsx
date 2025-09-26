@@ -15,6 +15,8 @@ const TechPage = lazy(() => import('@/pages/TechPage'))
 const ContactPage = lazy(() => import('@/pages/ContactPage'))
 const LoginPage = lazy(() => import('@/pages/LoginPage'))
 const RegisterPage = lazy(() => import('@/pages/RegisterPage'))
+const AuthCallbackPage = lazy(() => import('@/pages/AuthCallbackPage'))
+const ForgotPasswordPage = lazy(() => import('@/pages/ForgotPasswordPage'))
 const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'))
 
 // Future pages (commented out until implemented)
@@ -103,6 +105,22 @@ export const router = createBrowserRouter([
         element: (
           <LazyWrapper>
             <RegisterPage />
+          </LazyWrapper>
+        ),
+      },
+      {
+        path: 'auth/callback',
+        element: (
+          <LazyWrapper>
+            <AuthCallbackPage />
+          </LazyWrapper>
+        ),
+      },
+      {
+        path: 'forgot-password',
+        element: (
+          <LazyWrapper>
+            <ForgotPasswordPage />
           </LazyWrapper>
         ),
       },

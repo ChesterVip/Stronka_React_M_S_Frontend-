@@ -6,6 +6,7 @@ interface AuthContextType {
   isAuthenticated: boolean;
   isAdmin: boolean;
   isLoading: boolean;
+  setUser: (user: User | null) => void;
   login: (email: string, password: string) => Promise<void>;
   register: (data: { email: string; password: string; firstName: string; lastName: string; phone?: string }) => Promise<void>;
   logout: () => Promise<void>;
@@ -102,6 +103,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     isAuthenticated,
     isAdmin,
     isLoading,
+    setUser,
     login,
     register,
     logout,

@@ -4,6 +4,7 @@ import { useAuth } from '../hooks/useAuth';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/Card';
 import AnimatedSection from '../components/ui/AnimatedSection';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
+import authService from '../services/authService';
 
 const AuthCallbackPage = () => {
   const [searchParams] = useSearchParams();
@@ -26,22 +27,13 @@ const AuthCallbackPage = () => {
         localStorage.setItem('access_token', token);
         localStorage.setItem('refresh_token', refresh);
 
-        // Set user in auth context
-        // Note: You might need to fetch user data from backend
-        setUser({
-          id: 'temp',
-          email: 'user@example.com',
-          firstName: 'User',
-          lastName: 'Name',
-          role: 'user',
-          isEmailVerified: true,
-          isPhoneVerified: false,
-          isTwoFactorEnabled: false,
-          isActive: true,
-          authProvider: 'google',
-          createdAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString(),
-        });
+        // Initialize user from stored token
+        const currentUser = await authService.initializeUser();
+        if (currentUser) {
+          setUser(currentUser);
+        } else {
+          throw new Error('Nie udało się pobrać danych użytkownika');
+        }
 
         setStatus('success');
         setMessage('Logowanie zakończone pomyślnie!');
