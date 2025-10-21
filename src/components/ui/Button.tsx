@@ -2,7 +2,7 @@ import { ButtonHTMLAttributes, ReactNode } from 'react'
 import { cn } from '@/utils/cn'
 
 // Temporary type until class-variance-authority is installed
-type VariantProps<T> = T
+// type VariantProps<T> = T
 
 // Temporary implementation until class-variance-authority is installed
 const buttonVariants = (props: any) => {
@@ -24,8 +24,8 @@ const buttonVariants = (props: any) => {
   
   return cn(
     baseClasses,
-    variantClasses[props.variant || 'gold'],
-    sizeClasses[props.size || 'md'],
+    variantClasses[props.variant as keyof typeof variantClasses || 'gold'],
+    sizeClasses[props.size as keyof typeof sizeClasses || 'md'],
     props.className
   )
 }

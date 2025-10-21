@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react'
+import { useState } from 'react'
 import { cn } from '@/utils/cn'
 import AnimatedSection from './AnimatedSection'
 import { useLanguage } from '@/hooks/useLanguage'

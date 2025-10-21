@@ -311,9 +311,6 @@ export interface Translation {
   // Experience page specific
   experience_summary: string;
   experience_development_path: string;
-  experience_tab_timeline: string;
-  experience_tab_skills: string;
-  experience_tab_projects: string;
   git_timeline_title: string;
   git_view_oneline: string;
   git_view_detailed: string;

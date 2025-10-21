@@ -1,4 +1,3 @@
-import { ReactNode } from 'react'
 import { cn } from '@/utils/cn'
 import AnimatedSection from './AnimatedSection'
 import { useLanguage } from '@/hooks/useLanguage'

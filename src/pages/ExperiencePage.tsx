@@ -1,10 +1,9 @@
-import { useState } from 'react'
 import { useLanguage } from '@/hooks/useLanguage'
 import { useNavigate } from 'react-router-dom'
 import AnimatedSection from '@/components/ui/AnimatedSection'
 import GitTimeline from '@/components/ui/GitTimeline'
 import ProtectedSection from '@/components/ProtectedSection'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card'
 import Button from '@/components/ui/Button'
 import SEO, { pageConfigs } from '@/components/SEO'
 

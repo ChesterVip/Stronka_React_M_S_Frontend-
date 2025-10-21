@@ -116,6 +116,9 @@ export const translations: Record<Language, Translation> = {
     experience_cta_title: "Interesuje Cię moje doświadczenie?",
     experience_cta_subtitle: "Mam bogate doświadczenie w różnych branżach i jestem otwarty na nowe wyzwania.",
     experience_see_services: "Zobacz usługi",
+    experience_tab_timeline: "Timeline",
+    experience_tab_skills: "Umiejętności",
+    experience_tab_projects: "Projekty",
     
     // Education section
     education_title: "Edukacja i kwalifikacje", 
@@ -232,7 +235,6 @@ export const translations: Record<Language, Translation> = {
     
     // Form messages
     sending_message: "Wysyłanie...",
-    message_send_error: "Wystąpił błąd podczas wysyłania. Spróbuj ponownie.",
     response_time_note: "Odpowiem na Twoją wiadomość w ciągu",
     urgent_note: "W przypadku projektów pilnych - zadzwoń bezpośrednio.",
     
@@ -850,6 +852,9 @@ export const translations: Record<Language, Translation> = {
     experience_cta_title: "Interessiert Sie meine Erfahrung?",
     experience_cta_subtitle: "Ich habe umfangreiche Erfahrung in verschiedenen Branchen und bin offen für neue Herausforderungen.",
     experience_see_services: "Dienstleistungen ansehen",
+    experience_tab_timeline: "Timeline",
+    experience_tab_skills: "Fähigkeiten",
+    experience_tab_projects: "Projekte",
     
     // Education section
     education_title: "Bildung und Qualifikationen",
@@ -966,7 +971,6 @@ export const translations: Record<Language, Translation> = {
     
     // Form messages
     sending_message: "Wird gesendet...",
-    message_send_error: "Fehler beim Senden. Bitte versuchen Sie es erneut.",
     response_time_note: "Ich antworte auf Ihre Nachricht innerhalb von",
     urgent_note: "Bei dringenden Projekten - rufen Sie direkt an.",
     

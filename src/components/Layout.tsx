@@ -106,7 +106,7 @@ const Layout = () => {
                     >
                       <i className={cn("fas", icon, "text-sm")} />
                       <span className="flex items-center gap-2">
-                        {t[key as keyof typeof t]}
+                        {String(t[key as keyof typeof t])}
                         {isLocked && <i className="fas fa-lock text-xs text-gold-400"></i>}
                       </span>
                     </button>
@@ -180,7 +180,7 @@ const Layout = () => {
                 >
                   <i className={cn("fas", icon, "w-5 text-center")} />
                   <span className="flex items-center gap-2">
-                    {t[key as keyof typeof t]}
+                        {String(t[key as keyof typeof t])}
                     {isLocked && <i className="fas fa-lock text-xs text-gold-400"></i>}
                   </span>
                 </button>
@@ -224,7 +224,7 @@ const Layout = () => {
                       className="block text-gray-400 hover:text-gold-400 transition-colors duration-300"
                       title={isLocked ? t.restricted_nav_hint : undefined}
                     >
-                      {t[key as keyof typeof t]}
+                        {String(t[key as keyof typeof t])}
                       {isLocked && <i className="fas fa-lock ml-2 text-xs text-gold-400"></i>}
                     </button>
                   )

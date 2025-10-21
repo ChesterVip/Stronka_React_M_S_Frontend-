@@ -127,8 +127,8 @@ const EducationPage = () => {
             {/* Learning Stats */}
             <AnimatedSection animation="slide-up" delay={200} threshold={0.3}>
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
-                {learningStats.map((stat, index) => (
-                  <Card key={index} variant="glass" className="text-center">
+                {learningStats.map((stat) => (
+                  <Card key={stat.label} variant="glass" className="text-center">
                     <CardContent className="p-6">
                       <div className="mb-4">
                         <i className={`fas ${stat.icon} text-gold-400 text-3xl`} />
@@ -173,7 +173,7 @@ const EducationPage = () => {
               {activeTab === 'formal' && (
                 <AnimatedSection animation="fade-in" key="formal">
                   <div className="space-y-12">
-                    {formalEducation.map((edu, index) => (
+                    {formalEducation.map((edu) => (
                       <Card key={edu.id} variant="gradient" hover="glow" className="overflow-hidden">
                         <div className="grid lg:grid-cols-3 gap-6">
                           
@@ -248,7 +248,7 @@ const EducationPage = () => {
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {certifications.map((cert, index) => (
                       <Card 
-                        key={index}
+                        key={cert.name}
                         variant="neon"
                         hover="lift"
                         className="group"

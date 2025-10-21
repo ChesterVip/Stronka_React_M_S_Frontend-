@@ -55,7 +55,7 @@ const AnimatedSection = ({
 
   return (
     <Component
-      ref={ref}
+      ref={ref as any}
       className={cn(getAnimationClasses(), className)}
       style={{
         transitionDelay: `${delay}ms`,

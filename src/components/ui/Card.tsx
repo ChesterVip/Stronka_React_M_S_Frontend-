@@ -2,7 +2,7 @@ import { HTMLAttributes, ReactNode } from 'react'
 import { cn } from '@/utils/cn'
 
 // Temporary type until class-variance-authority is installed
-type VariantProps<T> = T
+// type VariantProps<T> = T
 
 // Temporary implementation until class-variance-authority is installed
 const cardVariants = (props: any) => {
@@ -28,9 +28,9 @@ const cardVariants = (props: any) => {
   
   return cn(
     baseClasses,
-    variantClasses[props.variant || 'default'],
-    sizeClasses[props.size || 'md'],
-    hoverClasses[props.hover || 'lift'],
+    variantClasses[props.variant as keyof typeof variantClasses || 'default'],
+    sizeClasses[props.size as keyof typeof sizeClasses || 'md'],
+    hoverClasses[props.hover as keyof typeof hoverClasses || 'lift'],
     props.className
   )
 }

@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { useNotificationStore, NotificationType } from '@/hooks/useNotification'
 import { cn } from '@/utils/cn'
 
@@ -111,7 +110,7 @@ const Notification = () => {
         </div>
       ))}
       
-      <style jsx>{`
+      <style>{`
         @keyframes slideInRight {
           from {
             transform: translateX(100%);

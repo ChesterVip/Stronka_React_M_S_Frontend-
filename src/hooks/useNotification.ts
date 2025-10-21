@@ -15,12 +15,12 @@ export interface Notification {
   }
 }
 
-interface NotificationStore {
-  notifications: Notification[]
-  addNotification: (notification: Omit<Notification, 'id'>) => void
-  removeNotification: (id: string) => void
-  clearAll: () => void
-}
+// interface NotificationStore {
+//   notifications: Notification[]
+//   addNotification: (notification: Omit<Notification, 'id'>) => void
+//   removeNotification: (id: string) => void
+//   clearAll: () => void
+// }
 
 // Temporary implementation until zustand is installed
 let globalNotifications: Notification[] = []
@@ -46,7 +46,7 @@ export const useNotificationStore = () => {
     notifyListeners()
     
     // Auto remove after duration
-    if (newNotification.duration > 0) {
+    if (newNotification.duration && newNotification.duration > 0) {
       setTimeout(() => {
         removeNotification(id)
       }, newNotification.duration)

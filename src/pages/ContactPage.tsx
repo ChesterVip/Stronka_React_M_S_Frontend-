@@ -866,7 +866,7 @@ const ContactPage = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  {responseTimeInfo.map((info, index) => {
+                  {responseTimeInfo.map((info) => {
                     const category = categories.find(c => c.id === info.category)
                     const isSelected = watchedCategory === info.category
                     

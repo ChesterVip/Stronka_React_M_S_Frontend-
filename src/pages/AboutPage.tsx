@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import SEO, { pageConfigs } from '@/components/SEO'
 
 const AboutPage = () => {
-  const { t, language } = useLanguage()
+  const { t } = useLanguage()
   const navigate = useNavigate()
   const [activeTab, setActiveTab] = useState<'story' | 'achievements' | 'values'>('story')
 
