@@ -291,7 +291,6 @@ export interface Translation {
   tech_view_label: string;
   tech_back_to_home: string;
   tech_see_details: string;
-  tech_demo: string;
   tech_code: string;
   tech_documentation: string;
   tech_project_description: string;
@@ -308,6 +307,50 @@ export interface Translation {
   tech_complexity_intermediate: string;
   tech_complexity_advanced: string;
   tech_complexity_expert: string;
+  
+  // Tech page specific
+  tech_technologies_title: string;
+  tech_technologies_subtitle: string;
+  tech_projects_title: string;
+  tech_projects_subtitle: string;
+  tech_skill_level: string;
+  tech_skill_expert: string;
+  tech_skill_advanced: string;
+  tech_skill_intermediate: string;
+  tech_skill_beginner: string;
+  tech_clear_filters: string;
+  tech_projects_using: string;
+  tech_no_projects: string;
+  tech_try_other: string;
+  tech_last_updated: string;
+  tech_github: string;
+  tech_demo: string;
+  tech_interested_cooperation: string;
+  tech_experience_many: string;
+  tech_contact: string;
+  
+  // Cookie Policy
+  cookie_policy_title: string;
+  cookie_policy_subtitle: string;
+  cookie_what_are: string;
+  cookie_what_are_desc: string;
+  cookie_types: string;
+  cookie_essential: string;
+  cookie_essential_desc: string;
+  cookie_analytics: string;
+  cookie_analytics_desc: string;
+  cookie_functional: string;
+  cookie_functional_desc: string;
+  cookie_third_party: string;
+  cookie_third_party_desc: string;
+  cookie_manage: string;
+  cookie_manage_desc: string;
+  cookie_browser_settings: string;
+  cookie_browser_settings_desc: string;
+  cookie_contact: string;
+  cookie_contact_desc: string;
+  cookie_last_updated: string;
+  cookie_last_updated_date: string;
   
   // HomePage specific
   homepage_overview_title: string;
@@ -518,6 +561,7 @@ export interface Translation {
   // Footer
   footer_quick_links: string;
   footer_copyright: string;
+  footer_cookie_policy: string;
   
   // NotFound page
   notfound_need_help: string;

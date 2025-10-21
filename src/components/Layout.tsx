@@ -257,7 +257,15 @@ const Layout = () => {
           </div>
           
           <div className="mt-8 pt-8 border-t border-gray-800 text-center text-gray-500">
-            <p>{t.footer_copyright}</p>
+            <p className="mb-2">{t.footer_copyright}</p>
+            <div className="flex justify-center space-x-4 text-sm">
+              <button
+                onClick={() => navigate('/cookies')}
+                className="text-gray-400 hover:text-gold-400 transition-colors duration-300"
+              >
+                {t.footer_cookie_policy}
+              </button>
+            </div>
           </div>
         </div>
       </footer>

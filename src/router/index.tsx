@@ -12,6 +12,7 @@ const ExperiencePage = lazy(() => import('@/pages/ExperiencePage'))
 const EducationPage = lazy(() => import('@/pages/EducationPage'))
 const TechPage = lazy(() => import('@/pages/TechPage'))
 const ContactPage = lazy(() => import('@/pages/ContactPage'))
+const CookiePolicyPage = lazy(() => import('@/pages/CookiePolicyPage'))
 const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'))
 
 // Future pages (commented out until implemented)
@@ -78,6 +79,14 @@ export const router = createBrowserRouter([
         element: (
           <LazyWrapper>
             <ContactPage />
+          </LazyWrapper>
+        ),
+      },
+      {
+        path: 'cookies',
+        element: (
+          <LazyWrapper>
+            <CookiePolicyPage />
           </LazyWrapper>
         ),
       },

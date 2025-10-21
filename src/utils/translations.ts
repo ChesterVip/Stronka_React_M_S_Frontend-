@@ -319,6 +319,29 @@ export const translations: Record<Language, Translation> = {
     tech_experience_many: "Mam doświadczenie w wielu technologiach i jestem otwarty na nowe wyzwania. Skontaktuj się ze mną!",
     tech_contact: "Skontaktuj się",
     
+    // Cookie Policy
+    cookie_policy_title: "Polityka Cookies",
+    cookie_policy_subtitle: "Informacje o wykorzystaniu plików cookies na stronie mariusz-sokolowski.ch",
+    cookie_what_are: "Co to są cookies?",
+    cookie_what_are_desc: "Cookies to małe pliki tekstowe przechowywane na Twoim urządzeniu podczas przeglądania strony internetowej. Pomagają one stronie zapamiętać informacje o Twojej wizycie, co może ułatwić następne odwiedziny i sprawić, że strona będzie bardziej użyteczna.",
+    cookie_types: "Rodzaje cookies używanych na tej stronie",
+    cookie_essential: "Cookies niezbędne",
+    cookie_essential_desc: "Te cookies są niezbędne do funkcjonowania strony internetowej i nie można ich wyłączyć. Zazwyczaj są ustawiane tylko w odpowiedzi na działania wykonywane przez Ciebie, które są równoznaczne z żądaniem usług, takich jak ustawienie preferencji prywatności, logowanie lub wypełnianie formularzy.",
+    cookie_analytics: "Cookies analityczne",
+    cookie_analytics_desc: "Te cookies pozwalają nam liczyć wizyty i źródła ruchu, abyśmy mogli mierzyć i poprawiać wydajność naszej strony. Pomagają nam dowiedzieć się, które strony są najbardziej i najmniej popularne oraz zobaczyć, jak odwiedzający poruszają się po stronie.",
+    cookie_functional: "Cookies funkcjonalne",
+    cookie_functional_desc: "Te cookies umożliwiają stronie internetowej zapamiętanie wyborów, których dokonujesz (takich jak Twoja nazwa użytkownika, język lub region, w którym się znajdujesz) i zapewniają ulepszone, bardziej osobiste funkcje.",
+    cookie_third_party: "Cookies stron trzecich",
+    cookie_third_party_desc: "Ta strona może zawierać cookies od stron trzecich, takich jak Google Analytics, które pomagają nam analizować sposób korzystania z naszej strony internetowej.",
+    cookie_manage: "Zarządzanie cookies",
+    cookie_manage_desc: "Możesz kontrolować i/lub usuwać cookies według własnego uznania. Możesz usunąć wszystkie cookies, które są już na Twoim komputerze, i możesz ustawić większość przeglądarek, aby zapobiec ich umieszczaniu.",
+    cookie_browser_settings: "Ustawienia przeglądarki",
+    cookie_browser_settings_desc: "Większość przeglądarek internetowych automatycznie akceptuje cookies, ale zazwyczaj możesz zmodyfikować ustawienia przeglądarki, aby odrzucić cookies, jeśli wolisz.",
+    cookie_contact: "Kontakt",
+    cookie_contact_desc: "Jeśli masz pytania dotyczące naszej polityki cookies, skontaktuj się z nami pod adresem info@mariusz-sokolowski.ch",
+    cookie_last_updated: "Ostatnia aktualizacja",
+    cookie_last_updated_date: "21 października 2024",
+    
     // GitHub Projects
     project_portfolio_desc: "Strona portfolio z zaawansowanym systemem logowania, wielojęzycznością i Git-style timeline doświadczenia. Implementacja automatycznej rejestracji użytkowników i systemu OTP.",
     project_transport_ai_desc: "System AI do optymalizacji tras transportowych z integracją GPS i predykcją kosztów. Wykorzystuje machine learning do analizy danych logistycznych.",
@@ -691,6 +714,7 @@ export const translations: Record<Language, Translation> = {
     // Footer
     footer_quick_links: "Szybkie linki",
     footer_copyright: "© 2025 Mariusz Sokołowski. Wszystkie prawa zastrzeżone.",
+    footer_cookie_policy: "Polityka Cookies",
     
     // NotFound page
     notfound_need_help: "Potrzebujesz pomocy?",
@@ -1015,6 +1039,29 @@ export const translations: Record<Language, Translation> = {
     tech_interested_cooperation: "Interessiert Sie eine Zusammenarbeit?",
     tech_experience_many: "Ich habe Erfahrung mit vielen Technologien und bin offen für neue Herausforderungen. Kontaktieren Sie mich!",
     tech_contact: "Kontakt aufnehmen",
+    
+    // Cookie Policy
+    cookie_policy_title: "Cookie-Richtlinie",
+    cookie_policy_subtitle: "Informationen zur Verwendung von Cookies auf der Website mariusz-sokolowski.ch",
+    cookie_what_are: "Was sind Cookies?",
+    cookie_what_are_desc: "Cookies sind kleine Textdateien, die auf Ihrem Gerät gespeichert werden, während Sie eine Website durchsuchen. Sie helfen der Website, sich an Informationen über Ihren Besuch zu erinnern, was Ihre nächsten Besuche erleichtern und die Website nützlicher machen kann.",
+    cookie_types: "Arten von Cookies, die auf dieser Website verwendet werden",
+    cookie_essential: "Notwendige Cookies",
+    cookie_essential_desc: "Diese Cookies sind für das Funktionieren der Website unerlässlich und können nicht deaktiviert werden. Sie werden normalerweise nur als Reaktion auf Aktionen gesetzt, die Sie ausführen und die einer Anfrage nach Diensten entsprechen, wie z.B. das Festlegen von Datenschutzeinstellungen, Anmelden oder das Ausfüllen von Formularen.",
+    cookie_analytics: "Analytische Cookies",
+    cookie_analytics_desc: "Diese Cookies ermöglichen es uns, Besuche und Verkehrsquellen zu zählen, damit wir die Leistung unserer Website messen und verbessern können. Sie helfen uns herauszufinden, welche Seiten am beliebtesten und am wenigsten beliebt sind, und zu sehen, wie sich Besucher auf der Website bewegen.",
+    cookie_functional: "Funktionale Cookies",
+    cookie_functional_desc: "Diese Cookies ermöglichen es der Website, sich an Ihre Auswahl zu erinnern (wie Ihren Benutzernamen, Sprache oder Region, in der Sie sich befinden) und bieten verbesserte, persönlichere Funktionen.",
+    cookie_third_party: "Cookies von Drittanbietern",
+    cookie_third_party_desc: "Diese Website kann Cookies von Drittanbietern wie Google Analytics enthalten, die uns helfen, die Nutzung unserer Website zu analysieren.",
+    cookie_manage: "Cookie-Verwaltung",
+    cookie_manage_desc: "Sie können Cookies nach eigenem Ermessen kontrollieren und/oder löschen. Sie können alle Cookies löschen, die bereits auf Ihrem Computer vorhanden sind, und Sie können die meisten Browser so einstellen, dass sie verhindern, dass sie platziert werden.",
+    cookie_browser_settings: "Browser-Einstellungen",
+    cookie_browser_settings_desc: "Die meisten Webbrowser akzeptieren Cookies automatisch, aber Sie können normalerweise die Browser-Einstellungen ändern, um Cookies abzulehnen, wenn Sie es vorziehen.",
+    cookie_contact: "Kontakt",
+    cookie_contact_desc: "Wenn Sie Fragen zu unserer Cookie-Richtlinie haben, kontaktieren Sie uns unter info@mariusz-sokolowski.ch",
+    cookie_last_updated: "Letzte Aktualisierung",
+    cookie_last_updated_date: "21. Oktober 2024",
     
     // GitHub Projects
     project_portfolio_desc: "Portfolio-Website mit erweitertem Anmeldesystem, Mehrsprachigkeit und Git-Style Timeline der Erfahrung. Implementierung der automatischen Benutzerregistrierung und OTP-System.",
@@ -1388,6 +1435,7 @@ export const translations: Record<Language, Translation> = {
     // Footer
     footer_quick_links: "Schnelle Links",
     footer_copyright: "© 2025 Mariusz Sokołowski. Alle Rechte vorbehalten.",
+    footer_cookie_policy: "Cookie-Richtlinie",
     
     // NotFound page
     notfound_need_help: "Brauchen Sie Hilfe?",
