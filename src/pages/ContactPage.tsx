@@ -333,7 +333,11 @@ const ContactPage = () => {
         iconClass: 'fab',
         label: 'Facebook',
         value: isAuthenticated
-          ? baseContact.facebook ?? unavailableContactValue
+          ? baseContact.facebook 
+            ? baseContact.facebook.includes('facebook.com') 
+              ? 'Facebook Profile'
+              : baseContact.facebook
+            : unavailableContactValue
           : 'Profil dostępny po zalogowaniu',
         link: isAuthenticated && baseContact.facebook ? baseContact.facebook : null,
         color: 'text-blue-600',
@@ -603,7 +607,7 @@ const ContactPage = () => {
                           <div />
                         )}
                         <span className={`${watchedMessage.length > 1800 ? 'text-red-400' : 'text-gray-400'}`}>
-                          {watchedMessage.length}/2000 znaków
+                          {watchedMessage.length}/2000 {t.characters_count}
                         </span>
                       </div>
                     </div>

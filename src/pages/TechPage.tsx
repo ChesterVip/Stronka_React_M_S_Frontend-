@@ -64,7 +64,7 @@ const TechPage = () => {
     {
       id: 'mariusz-sokolowski-ch',
       name: 'mariusz-sokolowski.ch',
-      description: 'Strona portfolio z zaawansowanym systemem logowania, wielojęzycznością i Git-style timeline doświadczenia. Implementacja automatycznej rejestracji użytkowników i systemu OTP.',
+      description: t.project_portfolio_desc,
       technologies: ['React', 'TypeScript', 'NestJS', 'PostgreSQL', 'Tailwind CSS', 'Vite'],
       githubUrl: 'https://github.com/mariusz-sokolowski/mariusz-sokolowski.ch',
       language: 'TypeScript',
@@ -76,7 +76,7 @@ const TechPage = () => {
     {
       id: 'transport-logistics-ai',
       name: 'Transport Logistics AI',
-      description: 'System AI do optymalizacji tras transportowych z integracją GPS i predykcją kosztów. Wykorzystuje machine learning do analizy danych logistycznych.',
+      description: t.project_transport_ai_desc,
       technologies: ['Python', 'TensorFlow', 'React', 'PostgreSQL', 'REST API'],
       githubUrl: 'https://github.com/mariusz-sokolowski/transport-logistics-ai',
       language: 'Python',
@@ -88,7 +88,7 @@ const TechPage = () => {
     {
       id: 'crypto-portfolio-tracker',
       name: 'Crypto Portfolio Tracker',
-      description: 'Aplikacja do śledzenia portfolio kryptowalut z real-time danymi z giełd. Implementacja WebSocket do aktualizacji cen i analizy zysków/strat.',
+      description: t.project_crypto_desc,
       technologies: ['React', 'Node.js', 'WebSocket', 'MongoDB', 'Chart.js'],
       githubUrl: 'https://github.com/mariusz-sokolowski/crypto-portfolio-tracker',
       language: 'JavaScript',
@@ -100,7 +100,7 @@ const TechPage = () => {
     {
       id: 'business-automation-suite',
       name: 'Business Automation Suite',
-      description: 'Zestaw narzędzi do automatyzacji procesów biznesowych z integracją CRM, ERP i systemów księgowymi. Workflow builder z drag-and-drop interface.',
+      description: t.project_automation_desc,
       technologies: ['Node.js', 'Python', 'Webhooks', 'REST API', 'Docker'],
       githubUrl: 'https://github.com/mariusz-sokolowski/business-automation-suite',
       language: 'JavaScript',
@@ -112,7 +112,7 @@ const TechPage = () => {
     {
       id: 'mobile-finance-app',
       name: 'Mobile Finance Management',
-      description: 'Aplikacja mobilna do zarządzania finansami osobistymi z AI-powered insights. Integracja z bankami przez Open Banking API i analiza wydatków.',
+      description: t.project_finance_desc,
       technologies: ['React Native', 'TypeScript', 'AI Tools', 'SQLite', 'Open Banking API'],
       githubUrl: 'https://github.com/mariusz-sokolowski/mobile-finance-app',
       language: 'TypeScript',

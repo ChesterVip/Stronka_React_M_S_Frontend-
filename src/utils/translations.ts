@@ -176,6 +176,9 @@ export const translations: Record<Language, Translation> = {
     subject_placeholder: "Krótko opisz temat swojego zapytania",
     message_label: "Wiadomość",
     message_placeholder: "Opisz szczegółowo swoje zapytanie, projekt lub propozycję współpracy...",
+    message_sent_success: "Wiadomość została wysłana pomyślnie!",
+    message_send_error: "Wystąpił błąd podczas wysyłania wiadomości.",
+    characters_count: "znaków",
     preferred_contact_label: "Preferowany sposób kontaktu",
     budget_label: "Budżet (opcjonalnie)",
     timeline_label: "Termin realizacji (opcjonalnie)",
@@ -315,6 +318,13 @@ export const translations: Record<Language, Translation> = {
     tech_interested_cooperation: "Interesuje Cię współpraca?",
     tech_experience_many: "Mam doświadczenie w wielu technologiach i jestem otwarty na nowe wyzwania. Skontaktuj się ze mną!",
     tech_contact: "Skontaktuj się",
+    
+    // GitHub Projects
+    project_portfolio_desc: "Strona portfolio z zaawansowanym systemem logowania, wielojęzycznością i Git-style timeline doświadczenia. Implementacja automatycznej rejestracji użytkowników i systemu OTP.",
+    project_transport_ai_desc: "System AI do optymalizacji tras transportowych z integracją GPS i predykcją kosztów. Wykorzystuje machine learning do analizy danych logistycznych.",
+    project_crypto_desc: "Aplikacja do śledzenia portfolio kryptowalut z real-time danymi z giełd. Implementacja WebSocket do aktualizacji cen i analizy zysków/strat.",
+    project_automation_desc: "Zestaw narzędzi do automatyzacji procesów biznesowych z integracją CRM, ERP i systemów księgowymi. Workflow builder z drag-and-drop interface.",
+    project_finance_desc: "Aplikacja mobilna do zarządzania finansami osobistymi z AI-powered insights. Integracja z bankami przez Open Banking API i analiza wydatków.",
     
     // Git Timeline specific
     git_timeline_title: "Mein Karriereweg",
@@ -863,6 +873,9 @@ export const translations: Record<Language, Translation> = {
     subject_placeholder: "Beschreiben Sie kurz das Thema Ihrer Anfrage",
     message_label: "Nachricht",
     message_placeholder: "Beschreiben Sie ausführlich Ihre Anfrage, Ihr Projekt oder Ihre Kooperationsvorschlag...",
+    message_sent_success: "Nachricht wurde erfolgreich gesendet!",
+    message_send_error: "Fehler beim Senden der Nachricht aufgetreten.",
+    characters_count: "Zeichen",
     preferred_contact_label: "Bevorzugte Kontaktmethode",
     budget_label: "Budget (optional)",
     timeline_label: "Realisierungszeitraum (optional)",
@@ -1002,6 +1015,13 @@ export const translations: Record<Language, Translation> = {
     tech_interested_cooperation: "Interessiert Sie eine Zusammenarbeit?",
     tech_experience_many: "Ich habe Erfahrung mit vielen Technologien und bin offen für neue Herausforderungen. Kontaktieren Sie mich!",
     tech_contact: "Kontakt aufnehmen",
+    
+    // GitHub Projects
+    project_portfolio_desc: "Portfolio-Website mit erweitertem Anmeldesystem, Mehrsprachigkeit und Git-Style Timeline der Erfahrung. Implementierung der automatischen Benutzerregistrierung und OTP-System.",
+    project_transport_ai_desc: "KI-System zur Optimierung von Transportrouten mit GPS-Integration und Kostenprognose. Nutzt Machine Learning zur Analyse von Logistikdaten.",
+    project_crypto_desc: "Anwendung zur Verfolgung von Kryptowährungsportfolios mit Echtzeitdaten von Börsen. WebSocket-Implementierung für Preisaktualisierungen und Gewinn-/Verlustanalyse.",
+    project_automation_desc: "Satz von Tools zur Automatisierung von Geschäftsprozessen mit CRM-, ERP- und Buchhaltungssystem-Integration. Workflow-Builder mit Drag-and-Drop-Interface.",
+    project_finance_desc: "Mobile Anwendung zur Verwaltung persönlicher Finanzen mit KI-gestützten Einblicken. Bankintegration über Open Banking API und Ausgabenanalyse.",
     
     // Git Timeline specific
     git_timeline_title: "Mein Karriereweg",

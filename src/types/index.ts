@@ -169,6 +169,7 @@ export interface Translation {
   subject_placeholder: string;
   message_label: string;
   message_placeholder: string;
+  characters_count: string;
   preferred_contact_label: string;
   budget_label: string;
   timeline_label: string;
@@ -530,6 +531,13 @@ export interface Translation {
   video_buffering: string;
   video_error: string;
   video_retry: string;
+  
+  // GitHub Projects
+  project_portfolio_desc: string;
+  project_transport_ai_desc: string;
+  project_crypto_desc: string;
+  project_automation_desc: string;
+  project_finance_desc: string;
 }
 
 // Contact form
