@@ -232,7 +232,6 @@ export const translations: Record<Language, Translation> = {
     
     // Form messages
     sending_message: "Wysyłanie...",
-    message_sent_success: "Dziękujemy za wiadomość! Odpowiemy w ciągu 24 godzin.",
     message_send_error: "Wystąpił błąd podczas wysyłania. Spróbuj ponownie.",
     response_time_note: "Odpowiem na Twoją wiadomość w ciągu",
     urgent_note: "W przypadku projektów pilnych - zadzwoń bezpośrednio.",
@@ -341,6 +340,20 @@ export const translations: Record<Language, Translation> = {
     cookie_contact_desc: "Jeśli masz pytania dotyczące naszej polityki cookies, skontaktuj się z nami pod adresem info@mariusz-sokolowski.ch",
     cookie_last_updated: "Ostatnia aktualizacja",
     cookie_last_updated_date: "21 października 2024",
+    
+    // Cookie Consent Banner
+    cookie_banner_title: "Ta strona używa plików cookies",
+    cookie_banner_description: "Używamy plików cookies, aby poprawić Twoje doświadczenia na stronie, analizować ruch i personalizować treści. Możesz zarządzać swoimi preferencjami w każdej chwili.",
+    cookie_banner_accept_all: "Akceptuję wszystkie",
+    cookie_banner_accept_necessary: "Tylko niezbędne",
+    cookie_banner_customize: "Dostosuj",
+    cookie_banner_more_info: "Więcej informacji",
+    cookie_banner_settings: "Ustawienia cookies",
+    cookie_banner_necessary_cookies: "Cookies niezbędne",
+    cookie_banner_analytics_cookies: "Cookies analityczne",
+    cookie_banner_functional_cookies: "Cookies funkcjonalne",
+    cookie_banner_save_preferences: "Zapisz preferencje",
+    cookie_banner_preferences_saved: "Twoje preferencje zostały zapisane",
     
     // GitHub Projects
     project_portfolio_desc: "Strona portfolio z zaawansowanym systemem logowania, wielojęzycznością i Git-style timeline doświadczenia. Implementacja automatycznej rejestracji użytkowników i systemu OTP.",
@@ -953,7 +966,6 @@ export const translations: Record<Language, Translation> = {
     
     // Form messages
     sending_message: "Wird gesendet...",
-    message_sent_success: "Vielen Dank für Ihre Nachricht! Wir antworten innerhalb von 24 Stunden.",
     message_send_error: "Fehler beim Senden. Bitte versuchen Sie es erneut.",
     response_time_note: "Ich antworte auf Ihre Nachricht innerhalb von",
     urgent_note: "Bei dringenden Projekten - rufen Sie direkt an.",
@@ -1062,6 +1074,20 @@ export const translations: Record<Language, Translation> = {
     cookie_contact_desc: "Wenn Sie Fragen zu unserer Cookie-Richtlinie haben, kontaktieren Sie uns unter info@mariusz-sokolowski.ch",
     cookie_last_updated: "Letzte Aktualisierung",
     cookie_last_updated_date: "21. Oktober 2024",
+    
+    // Cookie Consent Banner
+    cookie_banner_title: "Diese Website verwendet Cookies",
+    cookie_banner_description: "Wir verwenden Cookies, um Ihre Erfahrungen auf der Website zu verbessern, den Verkehr zu analysieren und Inhalte zu personalisieren. Sie können Ihre Präferenzen jederzeit verwalten.",
+    cookie_banner_accept_all: "Alle akzeptieren",
+    cookie_banner_accept_necessary: "Nur notwendige",
+    cookie_banner_customize: "Anpassen",
+    cookie_banner_more_info: "Weitere Informationen",
+    cookie_banner_settings: "Cookie-Einstellungen",
+    cookie_banner_necessary_cookies: "Notwendige Cookies",
+    cookie_banner_analytics_cookies: "Analytische Cookies",
+    cookie_banner_functional_cookies: "Funktionale Cookies",
+    cookie_banner_save_preferences: "Einstellungen speichern",
+    cookie_banner_preferences_saved: "Ihre Einstellungen wurden gespeichert",
     
     // GitHub Projects
     project_portfolio_desc: "Portfolio-Website mit erweitertem Anmeldesystem, Mehrsprachigkeit und Git-Style Timeline der Erfahrung. Implementierung der automatischen Benutzerregistrierung und OTP-System.",

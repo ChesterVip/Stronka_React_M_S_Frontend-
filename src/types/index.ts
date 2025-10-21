@@ -308,6 +308,41 @@ export interface Translation {
   tech_complexity_advanced: string;
   tech_complexity_expert: string;
   
+  // Experience page specific
+  experience_summary: string;
+  experience_development_path: string;
+  experience_tab_timeline: string;
+  experience_tab_skills: string;
+  experience_tab_projects: string;
+  git_timeline_title: string;
+  git_view_oneline: string;
+  git_view_detailed: string;
+  git_branch_all: string;
+  git_branch_main: string;
+  git_branch_polska: string;
+  git_branch_szwajcaria: string;
+  git_current_position: string;
+  git_showing_commits: string;
+  
+  // Services page specific
+  services_webdev_promo_price: string;
+  services_priority_high: string;
+  services_price_from: string;
+  services_promo_label: string;
+  services_get_quote: string;
+  services_tech_title: string;
+  services_tech_highlight: string;
+  services_finance_title: string;
+  services_finance_highlight: string;
+  services_transport_title: string;
+  services_transport_highlight: string;
+  
+  // Education page specific
+  education_cert_valid: string;
+  
+  // Contact page specific
+  logout_btn: string;
+  
   // Tech page specific
   tech_technologies_title: string;
   tech_technologies_subtitle: string;
@@ -351,6 +386,20 @@ export interface Translation {
   cookie_contact_desc: string;
   cookie_last_updated: string;
   cookie_last_updated_date: string;
+  
+  // Cookie Consent Banner
+  cookie_banner_title: string;
+  cookie_banner_description: string;
+  cookie_banner_accept_all: string;
+  cookie_banner_accept_necessary: string;
+  cookie_banner_customize: string;
+  cookie_banner_more_info: string;
+  cookie_banner_settings: string;
+  cookie_banner_necessary_cookies: string;
+  cookie_banner_analytics_cookies: string;
+  cookie_banner_functional_cookies: string;
+  cookie_banner_save_preferences: string;
+  cookie_banner_preferences_saved: string;
   
   // HomePage specific
   homepage_overview_title: string;

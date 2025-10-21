@@ -6,6 +6,7 @@ import { useScrollDirection } from '@/hooks/useScrollAnimation'
 import Notification from '@/components/Notification'
 import PageTransition from '@/components/PageTransition'
 import SecureLoginModal from '@/components/SecureLoginModal'
+import CookieConsentBanner from '@/components/CookieConsentBanner'
 import { AuthModalProvider } from '@/context/AuthModalContext'
 import { cn } from '@/utils/cn'
 
@@ -272,6 +273,9 @@ const Layout = () => {
 
         {/* Global Notifications */}
         <Notification />
+        
+        {/* Cookie Consent Banner */}
+        <CookieConsentBanner />
       </div>
     </AuthModalProvider>
   )

@@ -1,7 +1,7 @@
 import { useLanguage } from '@/hooks/useLanguage'
 import AnimatedSection from '@/components/ui/AnimatedSection'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card'
-import SEO, { pageConfigs } from '@/components/SEO'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card'
+import SEO from '@/components/SEO'
 
 const CookiePolicyPage = () => {
   const { t } = useLanguage()
@@ -11,7 +11,7 @@ const CookiePolicyPage = () => {
       <SEO 
         title={t.cookie_policy_title}
         description={t.cookie_policy_subtitle}
-        keywords="cookies, polityka cookies, privacy, prywatność, mariusz-sokolowski.ch"
+        keywords={["cookies", "polityka cookies", "privacy", "prywatność", "mariusz-sokolowski.ch"]}
       />
       
       <div className="min-h-screen bg-black text-white py-8">
