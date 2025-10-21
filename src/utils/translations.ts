@@ -287,6 +287,14 @@ export const translations: Record<Language, Translation> = {
     services_webdev_promo_price: "499 CHF",
     services_promo_label: "PROMOCJA",
     
+    // Video Hero
+    video_not_supported: "Twoja przeglądarka nie obsługuje odtwarzania wideo.",
+    video_skip: "Pomiń",
+    video_loading: "Ładowanie wideo...",
+    video_buffering: "Buforowanie...",
+    video_error: "Błąd ładowania wideo",
+    video_retry: "Spróbuj ponownie",
+    
     // Tech page specific
     tech_technologies_title: "Technologie",
     tech_technologies_subtitle: "Technologie, które znam i używam w projektach",
@@ -337,7 +345,6 @@ export const translations: Record<Language, Translation> = {
     tech_view_label: "Widok:",
     tech_back_to_home: "Powrót do strony głównej",
     tech_see_details: "Zobacz szczegóły",
-    tech_demo: "Demo",
     tech_code: "Code",
     tech_documentation: "Dokumentacja",
     tech_project_description: "Opis projektu",
@@ -967,6 +974,14 @@ export const translations: Record<Language, Translation> = {
     services_webdev_promo_price: "499 CHF",
     services_promo_label: "AKTION",
     
+    // Video Hero
+    video_not_supported: "Ihr Browser unterstützt keine Videowiedergabe.",
+    video_skip: "Überspringen",
+    video_loading: "Video wird geladen...",
+    video_buffering: "Puffern...",
+    video_error: "Fehler beim Laden des Videos",
+    video_retry: "Erneut versuchen",
+    
     // Tech page specific
     tech_technologies_title: "Technologien",
     tech_technologies_subtitle: "Technologien, die ich kenne und in Projekten verwende",
@@ -1017,7 +1032,6 @@ export const translations: Record<Language, Translation> = {
     tech_view_label: "Ansicht:",
     tech_back_to_home: "Zurück zur Startseite",
     tech_see_details: "Details ansehen",
-    tech_demo: "Demo",
     tech_code: "Code",
     tech_documentation: "Dokumentation",
     tech_project_description: "Projektbeschreibung",

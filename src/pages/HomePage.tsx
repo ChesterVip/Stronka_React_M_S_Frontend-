@@ -5,12 +5,25 @@ import { useTypingEffect } from '@/hooks/useTypingEffect'
 import AnimatedSection from '@/components/ui/AnimatedSection'
 import Button from '@/components/ui/Button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card'
+import VideoHero from '@/components/VideoHero'
 import SEO, { pageConfigs } from '@/components/SEO'
 
 const HomePage = () => {
   const { t } = useLanguage()
   const navigate = useNavigate()
   const [mounted, setMounted] = useState(false)
+  const [videoEnded, setVideoEnded] = useState(false)
+  const [isScrolling, setIsScrolling] = useState(false)
+
+  // Scroll detection
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolling(window.scrollY > 50)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const roles = [
     t.hero_tags.transport,
@@ -36,7 +49,15 @@ const HomePage = () => {
   return (
     <>
       <SEO {...pageConfigs.home} />
-      <div className="min-h-screen">
+      
+      {/* Video Hero */}
+      <VideoHero
+        videoSrc="/assets/film/start/film.mp4"
+        posterSrc="/assets/film/start/poster.jpg"
+        onVideoEnd={() => setVideoEnded(true)}
+      />
+      
+      <div className={`min-h-screen transition-opacity duration-1000 ${videoEnded || isScrolling ? 'opacity-100' : 'opacity-0'} ${videoEnded || isScrolling ? 'mt-0' : 'mt-16'}`}>
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center relative overflow-hidden tech-grid">
         {/* Background Effects */}

@@ -522,6 +522,14 @@ export interface Translation {
   notfound_need_help: string;
   notfound_contact_description: string;
   notfound_contact_form: string;
+  
+  // Video Hero
+  video_not_supported: string;
+  video_skip: string;
+  video_loading: string;
+  video_buffering: string;
+  video_error: string;
+  video_retry: string;
 }
 
 // Contact form

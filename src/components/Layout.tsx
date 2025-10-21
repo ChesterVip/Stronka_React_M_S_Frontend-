@@ -12,6 +12,7 @@ import { cn } from '@/utils/cn'
 const Layout = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [hideMenu, setHideMenu] = useState(false)
   const { language, setLanguage, t } = useLanguage()
   const location = useLocation()
   const navigate = useNavigate()
@@ -22,11 +23,23 @@ const Layout = () => {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50)
+      // Hide menu on homepage when scrolling (but show when video is collapsed)
+      if (location.pathname === '/') {
+        // Show menu when at top or when video is collapsed (scrollY > 50 for 1+ seconds)
+        setHideMenu(window.scrollY > 50)
+      }
     }
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [location.pathname])
+
+  // Reset hideMenu when leaving homepage
+  useEffect(() => {
+    if (location.pathname !== '/') {
+      setHideMenu(false)
+    }
+  }, [location.pathname])
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -54,13 +67,14 @@ const Layout = () => {
       <SecureLoginModal />
       <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black">
       {/* Navigation */}
-      <nav className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        scrolled 
-          ? "bg-black/80 backdrop-blur-lg border-b border-gold-500/20 shadow-lg" 
-          : "bg-transparent",
-        scrollDirection === 'down' && scrolled ? "-translate-y-full" : "translate-y-0"
-      )}>
+      {!hideMenu && (
+        <nav className={cn(
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+          scrolled 
+            ? "bg-black/80 backdrop-blur-lg border-b border-gold-500/20 shadow-lg" 
+            : "bg-transparent",
+          scrollDirection === 'down' && scrolled ? "-translate-y-full" : "translate-y-0"
+        )}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
@@ -174,6 +188,7 @@ const Layout = () => {
           </div>
         </div>
       </nav>
+      )}
 
       {/* Main Content */}
       <main className="pt-16">
