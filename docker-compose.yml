@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  # Backend API
+  backend:
+    build: ./BackEnd
+    container_name: mariusz-sokolowski-backend
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - DB_TYPE=sqlite
+      - DB_DATABASE=data/app.db
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_EXPIRES_IN=24h
+      - MAIL_HOST=${MAIL_HOST}
+      - MAIL_PORT=${MAIL_PORT}
+      - MAIL_USER=${MAIL_USER}
+      - MAIL_PASS=${MAIL_PASS}
+      - MAIL_FROM=${MAIL_FROM}
+      - ALLOWED_ORIGINS=https://mariusz-sokolowski.ch,https://www.mariusz-sokolowski.ch
+      - ENABLE_SWAGGER=false
+      - THROTTLE_TTL=60000
+      - THROTTLE_LIMIT=100
+    volumes:
+      - ./BackEnd/data:/app/data
+    restart: unless-stopped
+    networks:
+      - mariusz-network
+
+  # Frontend
+  frontend:
+    build: ./FrontEnd/Stronka_React_M_S
+    container_name: mariusz-sokolowski-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - mariusz-network
+
+networks:
+  mariusz-network:
+    driver: bridge
