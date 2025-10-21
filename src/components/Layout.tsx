@@ -1,9 +1,12 @@
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { useLanguage } from '@/hooks/useLanguage'
+import { useOneTimeAuth } from '@/hooks/useOneTimeAuth'
 import { useScrollDirection } from '@/hooks/useScrollAnimation'
 import Notification from '@/components/Notification'
 import PageTransition from '@/components/PageTransition'
+import SecureLoginModal from '@/components/SecureLoginModal'
+import { AuthModalProvider } from '@/context/AuthModalContext'
 import { cn } from '@/utils/cn'
 
 const Layout = () => {
@@ -13,6 +16,8 @@ const Layout = () => {
   const location = useLocation()
   const navigate = useNavigate()
   const scrollDirection = useScrollDirection()
+  const auth = useOneTimeAuth()
+  const { isAuthenticated } = auth
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,6 +42,7 @@ const Layout = () => {
     { key: 'nav_tech', path: '/tech', icon: 'fa-laptop-code' },
     { key: 'nav_contact', path: '/contact', icon: 'fa-envelope' }
   ]
+  const restrictedKeys = new Set(['nav_experience', 'nav_education', 'nav_tech'])
 
   const isActiveRoute = (path: string) => {
     if (path === '/' && location.pathname === '/') return true
@@ -44,7 +50,9 @@ const Layout = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black">
+    <AuthModalProvider auth={auth}>
+      <SecureLoginModal />
+      <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black">
       {/* Navigation */}
       <nav className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
@@ -65,23 +73,30 @@ const Layout = () => {
             </button>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
-                {navigationItems.map(({ key, path, icon }) => (
-                  <button
-                    key={key}
-                    onClick={() => navigate(path)}
-                    className={cn(
-                      "nav-link px-3 py-2 rounded-lg font-medium transition-all duration-300 flex items-center space-x-2",
-                      isActiveRoute(path)
-                        ? "text-gold-400 bg-gold-500/10"
-                        : "text-gray-300 hover:text-white hover:bg-gray-800/50"
-                    )}
-                  >
-                    <i className={cn("fas", icon, "text-sm")} />
-                    <span>{t[key as keyof typeof t]}</span>
-                  </button>
-                ))}
+            <div className="hidden lg:block">
+              <div className="ml-6 flex items-baseline gap-3">
+                {navigationItems.map(({ key, path, icon }) => {
+                  const isLocked = restrictedKeys.has(key) && !isAuthenticated
+                  return (
+                    <button
+                      key={key}
+                      onClick={() => navigate(path)}
+                      className={cn(
+                        "nav-link px-3 py-2 rounded-lg font-medium transition-all duration-300 flex items-center space-x-2",
+                        isActiveRoute(path)
+                          ? "text-gold-400 bg-gold-500/10"
+                          : "text-gray-300 hover:text-white hover:bg-gray-800/50"
+                      )}
+                      title={isLocked ? t.restricted_nav_hint : undefined}
+                    >
+                      <i className={cn("fas", icon, "text-sm")} />
+                      <span className="flex items-center gap-2">
+                        {t[key as keyof typeof t]}
+                        {isLocked && <i className="fas fa-lock text-xs text-gold-400"></i>}
+                      </span>
+                    </button>
+                  )
+                })}
               </div>
             </div>
 
@@ -92,7 +107,7 @@ const Layout = () => {
                 <button
                   onClick={() => setLanguage('pl')}
                   className={cn(
-                    "lang-btn px-3 py-1 rounded text-sm font-medium transition-all duration-300",
+                    "lang-btn px-2 py-1 rounded text-sm font-medium transition-all duration-300",
                     language === 'pl' ? 'active' : ''
                   )}
                   aria-label="Przełącz na polski"
@@ -102,7 +117,7 @@ const Layout = () => {
                 <button
                   onClick={() => setLanguage('de')}
                   className={cn(
-                    "lang-btn px-3 py-1 rounded text-sm font-medium transition-all duration-300",
+                    "lang-btn px-2 py-1 rounded text-sm font-medium transition-all duration-300",
                     language === 'de' ? 'active' : ''
                   )}
                   aria-label="Auf Deutsch umschalten"
@@ -134,21 +149,28 @@ const Layout = () => {
           isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         )}>
           <div className="px-2 pt-2 pb-3 space-y-1 bg-black/90 backdrop-blur-lg border-t border-gold-500/20">
-            {navigationItems.map(({ key, path, icon }) => (
-              <button
-                key={key}
-                onClick={() => navigate(path)}
-                className={cn(
-                  "w-full text-left px-3 py-3 rounded-lg font-medium transition-all duration-300 flex items-center space-x-3",
-                  isActiveRoute(path)
-                    ? "text-gold-400 bg-gold-500/10"
-                    : "text-gray-300 hover:text-white hover:bg-gray-800/50"
-                )}
-              >
-                <i className={cn("fas", icon, "w-5 text-center")} />
-                <span>{t[key as keyof typeof t]}</span>
-              </button>
-            ))}
+            {navigationItems.map(({ key, path, icon }) => {
+              const isLocked = restrictedKeys.has(key) && !isAuthenticated
+              return (
+                <button
+                  key={key}
+                  onClick={() => navigate(path)}
+                  className={cn(
+                    "w-full text-left px-3 py-3 rounded-lg font-medium transition-all duration-300 flex items-center space-x-3",
+                    isActiveRoute(path)
+                      ? "text-gold-400 bg-gold-500/10"
+                      : "text-gray-300 hover:text-white hover:bg-gray-800/50"
+                  )}
+                  title={isLocked ? t.restricted_nav_hint : undefined}
+                >
+                  <i className={cn("fas", icon, "w-5 text-center")} />
+                  <span className="flex items-center gap-2">
+                    {t[key as keyof typeof t]}
+                    {isLocked && <i className="fas fa-lock text-xs text-gold-400"></i>}
+                  </span>
+                </button>
+              )
+            })}
           </div>
         </div>
       </nav>
@@ -177,15 +199,20 @@ const Layout = () => {
             <div>
               <h4 className="text-lg font-semibold text-white mb-4">{t.footer_quick_links}</h4>
               <div className="space-y-2">
-                {navigationItems.slice(0, 4).map(({ key, path }) => (
-                  <button
-                    key={key}
-                    onClick={() => navigate(path)}
-                    className="block text-gray-400 hover:text-gold-400 transition-colors duration-300"
-                  >
-                    {t[key as keyof typeof t]}
-                  </button>
-                ))}
+                {navigationItems.slice(0, 4).map(({ key, path }) => {
+                  const isLocked = restrictedKeys.has(key) && !isAuthenticated
+                  return (
+                    <button
+                      key={key}
+                      onClick={() => navigate(path)}
+                      className="block text-gray-400 hover:text-gold-400 transition-colors duration-300"
+                      title={isLocked ? t.restricted_nav_hint : undefined}
+                    >
+                      {t[key as keyof typeof t]}
+                      {isLocked && <i className="fas fa-lock ml-2 text-xs text-gold-400"></i>}
+                    </button>
+                  )
+                })}
               </div>
             </div>
             
@@ -220,9 +247,10 @@ const Layout = () => {
         </div>
       </footer>
 
-      {/* Global Notifications */}
-      <Notification />
-    </div>
+        {/* Global Notifications */}
+        <Notification />
+      </div>
+    </AuthModalProvider>
   )
 }
 

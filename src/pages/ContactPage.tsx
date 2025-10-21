@@ -1,12 +1,15 @@
-import { useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { useLanguage } from '@/hooks/useLanguage'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import AnimatedSection from '@/components/ui/AnimatedSection'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card'
 import Button from '@/components/ui/Button'
+import LoadingSpinner from '@/components/ui/LoadingSpinner'
+import { useAuthModal } from '@/context/AuthModalContext'
+import { apiFetch } from '@/utils/api'
 
 // Zod validation schemas
 const contactSchema = z.object({
@@ -66,21 +69,115 @@ const contactSchema = z.object({
 
 type ContactFormData = z.infer<typeof contactSchema>
 
+type SecureContactInfo = {
+  email?: string
+  phone?: string
+  whatsapp?: string
+  facebook?: string
+}
+
+type ContactSubmissionResponse = {
+  message?: string
+}
+
+const unavailableContactValue = 'Dane chwilowo niedostępne'
+
 const ContactPage = () => {
   const { t } = useLanguage()
   const navigate = useNavigate()
+  const location = useLocation()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [submitMessage, setSubmitMessage] = useState('')
-  const [isLoggedIn, setIsLoggedIn] = useState(false) // Mock - później będzie z systemu autoryzacji
+  const { auth, openAuthModal } = useAuthModal()
+  const { isAuthenticated, logout, token: authToken, email: authenticatedEmail } = auth
+  const [authSuccessMessage, setAuthSuccessMessage] = useState<string | null>(null)
+  const [contactDetails, setContactDetails] = useState<SecureContactInfo | null>(null)
+  const [contactError, setContactError] = useState<string | null>(null)
+  const [isContactLoading, setIsContactLoading] = useState(false)
+  const [redirectNotice, setRedirectNotice] = useState<string | null>(null)
+  const redirectedFrom = (location.state as { from?: string } | undefined)?.from ?? null
+
+  useEffect(() => {
+    if (!authSuccessMessage) {
+      return
+    }
+
+    const timer = window.setTimeout(() => {
+      setAuthSuccessMessage(null)
+    }, 6000)
+
+    return () => window.clearTimeout(timer)
+  }, [authSuccessMessage])
+
+  useEffect(() => {
+    if (!isAuthenticated || !authToken) {
+      setContactDetails(null)
+      setContactError(null)
+      return
+    }
+
+    let isCancelled = false
+    setIsContactLoading(true)
+    setContactError(null)
+
+    apiFetch<SecureContactInfo>('/secure/contact', { token: authToken })
+      .then(data => {
+        if (!isCancelled) {
+          setContactDetails(data)
+        }
+      })
+      .catch(error => {
+        if (!isCancelled) {
+          setContactError(
+            error instanceof Error ? error.message : 'Nie udało się pobrać danych kontaktowych.'
+          )
+          setContactDetails(null)
+        }
+      })
+      .finally(() => {
+        if (!isCancelled) {
+          setIsContactLoading(false)
+        }
+      })
+
+    return () => {
+      isCancelled = true
+    }
+  }, [isAuthenticated, authToken])
+
+  useEffect(() => {
+    if (!isAuthenticated && redirectedFrom) {
+      const labelMap: Record<string, string> = {
+        '/experience': t.nav_experience,
+        '/education': t.nav_education,
+        '/tech': t.nav_tech
+      }
+      const sectionLabel = labelMap[redirectedFrom] ?? redirectedFrom
+      setRedirectNotice(
+        `${t.restricted_description_prefix} ${sectionLabel} ${t.restricted_description_suffix}`
+      )
+      openAuthModal({
+        sectionLabel,
+        prefillEmail: authenticatedEmail ?? undefined,
+        onSuccess: () => setAuthSuccessMessage(t.restricted_login_success)
+      })
+      navigate(location.pathname, { replace: true })
+    }
+  }, [isAuthenticated, redirectedFrom, t, navigate, location.pathname, openAuthModal, authenticatedEmail])
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      setRedirectNotice(null)
+    }
+  }, [isAuthenticated])
   
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid, isDirty },
+    formState: { errors, isValid },
     watch,
-    reset,
-    trigger
+    reset
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
     mode: 'onChange',
@@ -95,7 +192,7 @@ const ContactPage = () => {
   // Watch specific fields for dynamic validation
   const watchedMessage = watch('message', '')
   const watchedCategory = watch('category')
-  
+
   const categories = [
     { id: 'general', name: t.category_general, icon: 'fa-question-circle' },
     { id: 'business', name: t.category_business, icon: 'fa-handshake' },
@@ -113,105 +210,151 @@ const ContactPage = () => {
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true)
     setSubmitStatus('idle')
-    
+
+    const payload = {
+      name: data.name.trim(),
+      email: data.email.trim(),
+      phone: data.phone?.trim() || undefined,
+      company: data.company?.trim() || undefined,
+      subject: data.subject.trim(),
+      category: data.category,
+      priority: data.priority,
+      preferredContact: data.preferredContact,
+      message: data.message.trim(),
+      budget: data.budget?.trim() || undefined,
+      timeline: data.timeline?.trim() || undefined,
+      gdprConsent: data.gdprConsent,
+      marketingConsent: data.marketingConsent ?? false
+    }
+
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000))
-      
-      // In real application, this would be an actual API call
-      console.log('Form submitted:', {
-        ...data,
-        timestamp: new Date().toISOString(),
-        userAgent: navigator.userAgent,
-        ipAddress: 'xxx.xxx.xxx.xxx' // Would be handled server-side
+      const response = await apiFetch<ContactSubmissionResponse>('/contact', {
+        method: 'POST',
+        body: JSON.stringify(payload)
       })
-      
+
       setSubmitStatus('success')
-      setSubmitMessage(t.message_sent_success)
+      setSubmitMessage(response?.message ?? t.message_sent_success)
       reset()
-      
     } catch (error) {
       setSubmitStatus('error')
-      setSubmitMessage(t.message_send_error)
+      setSubmitMessage(
+        error instanceof Error ? error.message : t.message_send_error
+      )
     } finally {
       setIsSubmitting(false)
     }
   }
 
-  const contactInfo = [
-    {
-      icon: 'fa-envelope',
-      iconClass: 'fas',
-      label: t.email_label,
-      value: isLoggedIn ? 'mariusz.sokolowski@fgfalke.eu' : '***@***.***',
-      link: isLoggedIn ? 'mailto:mariusz.sokolowski@fgfalke.eu' : null,
-      color: 'text-blue-400',
-      requiresAuth: true
-    },
-    {
-      icon: 'fa-phone',
-      iconClass: 'fas',
-      label: t.phone_label,
-      value: isLoggedIn ? '+41 76 237 33 01' : '+41 *** *** ***',
-      link: isLoggedIn ? 'tel:+41762373301' : null,
-      color: 'text-green-400',
-      requiresAuth: true
-    },
-    {
-      icon: 'fa-flag',
-      iconClass: 'fas',
-      label: t.location_label,
-      value: 'Schweiz',
-      link: null,
-      color: 'text-red-400',
-      requiresAuth: false
-    },
-    {
-      icon: 'fa-linkedin',
-      iconClass: 'fab',
-      label: 'LinkedIn',
-      value: 'LinkedIn Profile',
-      link: 'https://www.linkedin.com/in/mariuszsokolowski5014/',
-      color: 'text-blue-500',
-      requiresAuth: false
-    },
-    {
-      icon: 'fa-github',
-      iconClass: 'fab',
-      label: 'GitHub',
-      value: 'GitHub Profile',
-      link: 'https://github.com/ChesterVip',
-      color: 'text-gray-300',
-      requiresAuth: false
-    },
-    {
-      icon: 'fa-gitlab',
-      iconClass: 'fab',
-      label: 'GitLab',
-      value: 'GitLab Profile',
-      link: 'https://gitlab.com/ChesterVip',
-      color: 'text-orange-500',
-      requiresAuth: false
-    },
-    {
-      icon: 'fa-discord',
-      iconClass: 'fab',
-      label: 'Discord',
-      value: 'chestervip',
-      link: null,
-      color: 'text-indigo-400',
-      requiresAuth: false
-    },
-    {
-      icon: 'fa-facebook',
-      iconClass: 'fab',
-      label: 'Facebook',
-      value: 'Facebook Profile',
-      link: 'https://www.facebook.com/mariusz.sokolowski.94',
-      color: 'text-blue-600',
-      requiresAuth: false
-    }
-  ]
+  const contactInfo = useMemo(() => {
+    const baseContact = contactDetails ?? {}
+    const emailValue = baseContact.email ?? null
+    const phoneValue = baseContact.phone ?? null
+    const whatsappValue = baseContact.whatsapp ?? null
+    const phoneLink = phoneValue ? `tel:${phoneValue.replace(/\s+/g, '')}` : null
+    const whatsappLink = whatsappValue
+      ? `https://wa.me/${whatsappValue.replace(/[^\d]/g, '')}`
+      : null
+    return [
+      {
+        icon: 'fa-envelope',
+        iconClass: 'fas',
+        label: t.email_label,
+        value: isAuthenticated ? emailValue ?? unavailableContactValue : '***@***.***',
+        link: isAuthenticated && emailValue ? `mailto:${emailValue}` : null,
+        color: 'text-blue-400',
+        requiresAuth: true
+      },
+      {
+        icon: 'fa-phone',
+        iconClass: 'fas',
+        label: t.phone_label,
+        value: isAuthenticated ? phoneValue ?? unavailableContactValue : '+41 *** *** ***',
+        link: isAuthenticated && phoneLink ? phoneLink : null,
+        color: 'text-green-400',
+        requiresAuth: true
+      },
+      {
+        icon: 'fa-whatsapp',
+        iconClass: 'fab',
+        label: 'WhatsApp',
+        value: isAuthenticated ? whatsappValue ?? unavailableContactValue : '+41 *** *** ***',
+        link: isAuthenticated && whatsappLink ? whatsappLink : null,
+        color: 'text-emerald-400',
+        requiresAuth: true
+      },
+      {
+        icon: 'fa-flag',
+        iconClass: 'fas',
+        label: t.location_label,
+        value: 'Schweiz',
+        link: null,
+        color: 'text-red-400',
+        requiresAuth: false
+      },
+      {
+        icon: 'fa-linkedin',
+        iconClass: 'fab',
+        label: 'LinkedIn',
+        value: 'LinkedIn Profile',
+        link: 'https://www.linkedin.com/in/mariuszsokolowski5014/',
+        color: 'text-blue-500',
+        requiresAuth: false
+      },
+      {
+        icon: 'fa-github',
+        iconClass: 'fab',
+        label: 'GitHub',
+        value: 'GitHub Profile',
+        link: 'https://github.com/ChesterVip',
+        color: 'text-gray-300',
+        requiresAuth: false
+      },
+      {
+        icon: 'fa-gitlab',
+        iconClass: 'fab',
+        label: 'GitLab',
+        value: 'GitLab Profile',
+        link: 'https://gitlab.com/ChesterVip',
+        color: 'text-orange-500',
+        requiresAuth: false
+      },
+      {
+        icon: 'fa-discord',
+        iconClass: 'fab',
+        label: 'Discord',
+        value: 'chestervip',
+        link: null,
+        color: 'text-indigo-400',
+        requiresAuth: false
+      },
+      {
+        icon: 'fa-facebook',
+        iconClass: 'fab',
+        label: 'Facebook',
+        value: isAuthenticated
+          ? baseContact.facebook ?? unavailableContactValue
+          : 'Profil dostępny po zalogowaniu',
+        link: isAuthenticated && baseContact.facebook ? baseContact.facebook : null,
+        color: 'text-blue-600',
+        requiresAuth: true
+      }
+    ]
+  }, [isAuthenticated, contactDetails, t])
+
+  const handleOpenLoginModal = () => {
+    openAuthModal({
+      sectionLabel: t.nav_contact,
+      prefillEmail: authenticatedEmail ?? undefined,
+      onSuccess: () => setAuthSuccessMessage(t.restricted_login_success)
+    })
+  }
+
+  const handleLogoutClick = () => {
+    logout()
+    setContactDetails(null)
+    setContactError(null)
+  }
 
   const responseTimeInfo = [
     { category: 'general', time: t.response_general, priority: 'medium' },
@@ -238,14 +381,35 @@ const ContactPage = () => {
             <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
               {t.contact_page_subtitle}
             </p>
-            {/* Temporary login button for testing */}
-            <div className="mt-4">
-              <button
-                onClick={() => setIsLoggedIn(!isLoggedIn)}
-                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+            <div className="mt-6 flex flex-col items-center gap-3">
+              <Button
+                variant="primary"
+                size="md"
+                onClick={isAuthenticated ? handleLogoutClick : handleOpenLoginModal}
               >
-                {isLoggedIn ? 'Wyloguj się' : 'Zaloguj się'} (Test)
-              </button>
+                {isAuthenticated ? t.logout_btn : t.restricted_button}
+              </Button>
+              <p className="text-sm text-gray-400 max-w-md">
+                {isAuthenticated
+                  ? 'Dane kontaktowe są widoczne. Kod wygaśnie po 24 godzinach.'
+                  : 'Zaloguj się, aby zobaczyć pełne dane kontaktowe i wysłać wiadomość bez ograniczeń.'}
+              </p>
+              {redirectNotice && !isAuthenticated && (
+                <div className="w-full max-w-lg rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-100 shadow-inner">
+                  <div className="flex items-start gap-3">
+                    <span className="mt-0.5">
+                      <i className="fas fa-lock text-amber-300"></i>
+                    </span>
+                    <div className="text-left">
+                      <p className="font-semibold">{redirectNotice}</p>
+                      <p className="mt-1 text-xs text-amber-200/80">{t.restricted_hint}</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+              {authSuccessMessage && (
+                <span className="text-sm text-emerald-400">{authSuccessMessage}</span>
+              )}
             </div>
           </div>
         </AnimatedSection>
@@ -619,33 +783,68 @@ const ContactPage = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  {contactInfo.map((info, index) => (
-                    <div key={index} className="flex items-center gap-4 p-3 bg-gray-800/50 rounded-lg hover:bg-gray-800/70 transition-colors">
-                      <div className={`p-2 rounded-lg bg-gray-700 ${info.color}`}>
-                        <i className={`${info.iconClass} ${info.icon}`}></i>
-                      </div>
-                      <div className="flex-1">
-                        <div className="text-sm text-gray-400">{info.label}</div>
-                        {info.link ? (
-                          <button 
-                            onClick={() => info.link && window.open(info.link, '_blank')}
-                            className={`${info.color} hover:underline cursor-pointer bg-transparent border-none p-0 text-left font-medium`}
-                            title={info.link}
-                          >
-                            {info.value}
-                          </button>
-                        ) : (
-                          <div className="text-white">{info.value}</div>
-                        )}
-                        {info.requiresAuth && !isLoggedIn && (
-                          <div className="text-xs text-gray-500 mt-1">
-                            <i className="fas fa-lock mr-1"></i>
-                            Wymaga logowania
+                  {isAuthenticated ? (
+                    <>
+                      {isContactLoading && (
+                        <div className="flex items-center gap-2 rounded-lg bg-gray-800/60 p-3 text-sm text-gray-300">
+                          <LoadingSpinner size="sm" color="blue" />
+                          <span>Ładujemy dane kontaktowe...</span>
+                        </div>
+                      )}
+                      {contactError && !isContactLoading && (
+                        <div className="rounded-lg bg-red-500/10 p-3 text-sm text-red-300">
+                          <i className="fas fa-exclamation-circle mr-2"></i>
+                          {contactError}
+                        </div>
+                      )}
+                      {contactInfo.map((info, index) => (
+                        <div
+                          key={index}
+                          className="flex items-center gap-4 rounded-lg bg-gray-800/50 p-3 transition-colors hover:bg-gray-800/70"
+                        >
+                          <div className={`p-2 rounded-lg bg-gray-700 ${info.color}`}>
+                            <i className={`${info.iconClass} ${info.icon}`}></i>
                           </div>
-                        )}
+                          <div className="flex-1">
+                            <div className="text-sm text-gray-400">{info.label}</div>
+                            {info.link ? (
+                              <button
+                                onClick={() => info.link && window.open(info.link, '_blank')}
+                                className={`${info.color} cursor-pointer bg-transparent p-0 text-left font-medium hover:underline`}
+                                title={info.link}
+                              >
+                                {info.value}
+                              </button>
+                            ) : (
+                              <div className="text-white">{info.value}</div>
+                            )}
+                            {info.requiresAuth &&
+                              !info.link &&
+                              info.value === unavailableContactValue && (
+                              <div className="text-xs text-gray-500 mt-1">
+                                Spróbuj ponownie później.
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                    </>
+                  ) : (
+                    <div className="flex flex-col items-center gap-3 rounded-lg bg-gray-800/60 p-6 text-center">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-700 text-blue-400">
+                        <i className="fas fa-lock"></i>
                       </div>
+                      <p className="text-sm text-gray-300">
+                        Zaloguj się jednorazowym kodem, aby wyświetlić chronione dane kontaktowe.
+                      </p>
+                      <Button variant="primary" size="sm" onClick={handleOpenLoginModal}>
+                        {t.restricted_button}
+                      </Button>
+                      <p className="text-xs text-gray-500">
+                        Po weryfikacji ujawnimy e-mail, telefon i dodatkowe kanały komunikacji.
+                      </p>
                     </div>
-                  ))}
+                  )}
                 </CardContent>
               </Card>
             </AnimatedSection>

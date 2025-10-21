@@ -2,6 +2,17 @@
 
 A professional React-based portfolio website with TypeScript, showcasing transport business expertise, technology projects, and comprehensive professional background.
 
+## 🛠️ Local setup with the backend
+
+1. Backend (`../BackEnd`):
+   - `npm install`
+   - Copy `.env.example` to `.env.local`, then set `ALLOWED_ORIGINS` (default includes `http://localhost:5173`) and other secrets.
+   - `npm run start:dev`
+2. Frontend (this project):
+   - `npm install`
+   - Copy `.env.example` to `.env.local` and point `VITE_API_BASE_URL` to your backend, e.g. `http://localhost:3000`.
+   - `npm run dev`
+
 ## 🚀 Current Status
 
 ✅ **COMPLETED FEATURES:**
