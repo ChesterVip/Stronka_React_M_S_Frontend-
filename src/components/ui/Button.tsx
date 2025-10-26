@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, ReactNode } from 'react'
+import { ButtonHTMLAttributes, ReactNode, memo } from 'react'
 import { cn } from '@/utils/cn'
 
 // Temporary type until class-variance-authority is installed
@@ -40,7 +40,7 @@ export interface ButtonProps
   size?: 'sm' | 'md' | 'lg' | 'xl'
 }
 
-const Button = ({ 
+const Button = memo(({ 
   className, 
   variant, 
   size, 
@@ -69,6 +69,7 @@ const Button = ({
       )}
     </button>
   )
-}
+})
+Button.displayName = 'Button'
 
 export default Button

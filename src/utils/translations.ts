@@ -76,10 +76,10 @@ export const translations: Record<Language, Translation> = {
     services_btn: "Zobacz usługi",
     hero_tags: {
       transport: "Transport międzynarodowy",
-      experience: "5+ lat w Szwajcarii", 
+      experience: "Doświadczenie międzynarodowe", 
       education: "Inżynier logistyki",
-      finance: "Finanse i rachunkowość",
-      tech: "Web Development"
+      finance: "Specjalista finansów",
+      tech: "Web Development & AI"
     },
     
     // About section
@@ -89,18 +89,18 @@ export const translations: Record<Language, Translation> = {
     about_entrepreneur: "Przedsiębiorca z pasją do doskonałości.",
     about_entrepreneur_desc: "Prowadzę własną firmę transportową w Polsce, którą budowałem od podstaw z myślą o najwyższej jakości usług i profesjonalnym podejściu do klienta.",
     about_international: "Międzynarodowe doświadczenie.",
-    about_international_desc: "Przez ostatnie 5 lat pracuję jako kierowca CE w Szwajcarii, gdzie zdobywam cenne doświadczenie w międzynarodowym transporcie i uczę się od najlepszych w branży.",
+    about_international_desc: "Wieloletnie doświadczenie w międzynarodowym transporcie, w tym współpraca z wiodącymi firmami logistycznymi w Europie. Nabyta wiedza o standardach europejskich i szwajcarskiej precyzji w zarządzaniu operacjami.",
     about_development: "Ciągły rozwój.",
     about_development_desc: "Jestem inżynierem zarządzania procesami logistycznymi i aktualnie kończę studia magisterskie z finansów i rachunkowości. To połączenie teorii z praktyką pozwala mi optymalizować procesy i osiągać lepsze rezultaty.",
     about_tech_enthusiast: "Technologiczny entuzjasta.",
     about_tech_enthusiast_desc: "W wolnym czasie tworzę zaawansowane strony internetowe, wykorzystuję AI w codziennej pracy i interesuję się najnowszymi technologiami. Jeżdżę Teslą, co odzwierciedla moje podejście do innowacji.",
     about_achievements_title: "Kluczowe osiągnięcia",
     about_achievements: {
-      business: "Własna firma transportowa - stabilny rozwój",
-      swiss_exp: "5+ lat doświadczenia w Szwajcarii",
-      engineer: "Tytuł inżyniera logistyki",
-      master: "Studia magisterskie z finansów (ostatni semestr)",
-      webdev: "Zaawansowane projekty web development"
+      business: "Właściciel firmy transportowej - stabilny rozwój biznesu",
+      swiss_exp: "Doświadczenie międzynarodowe w logistyce",
+      engineer: "Inżynier zarządzania procesami logistycznymi",
+      master: "Magister finansów i rachunkowości (w trakcie finalizacji)",
+      webdev: "Zaawansowane projekty Web Development & AI"
     },
     about_hobbies_title: "Pasje i hobby",
     
@@ -239,7 +239,7 @@ export const translations: Record<Language, Translation> = {
     about_tab_achievements: "Osiągnięcia",
     about_tab_values: "Wartości",
     about_achievement_business_desc: "Firma transportowa z stabilnymi kontraktami i rosnącą bazą klientów",
-    about_achievement_swiss_desc: "Doświadczenie w transporcie międzynarodowym w wymagającym środowisku szwajcarskim",
+    about_achievement_swiss_desc: "Wieloletnia współpraca z europejskimi liderami logistyki, znajomość standardów międzynarodowych i kultury biznesowej",
     about_achievement_engineer_desc: "Ukończone studia inżynierskie z zarządzania procesami logistycznymi",
     about_achievement_master_desc: "W trakcie ukończenia studiów magisterskich z finansów i rachunkowości",
     about_achievement_webdev_desc: "Samodzielne projekty web development z wykorzystaniem najnowszych technologii",
@@ -251,7 +251,7 @@ export const translations: Record<Language, Translation> = {
     about_value_precision_desc: "Dbałość o każdy szczegół",
     about_value_partnership: "Partnerstwo",
     about_value_partnership_desc: "Budowanie długotrwałych relacji",
-    about_stat_years_switzerland: "Lat w Szwajcarii",
+    about_stat_years_international: "Lat doświadczenia",
     about_stat_daily_km: "Km dziennie",
     about_stat_languages: "Języki",
     about_stat_it_projects: "Projektów IT",
@@ -932,6 +932,7 @@ export const translations: Record<Language, Translation> = {
     about_value_partnership: "Partnerschaft",
     about_value_partnership_desc: "Aufbau langfristiger Beziehungen",
     about_stat_years_switzerland: "Jahre in der Schweiz",
+    about_stat_years_international: "Jahre Erfahrung",
     about_stat_daily_km: "Km täglich",
     about_stat_languages: "Sprachen",
     about_stat_it_projects: "IT-Projekte",
