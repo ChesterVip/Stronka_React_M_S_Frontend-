@@ -63,7 +63,7 @@ const AboutPage = () => {
   ]
 
   const stats = [
-    { number: '5+', label: t.about_stat_years_switzerland, icon: 'fa-calendar-alt' },
+    { number: '5+', label: t.about_stat_years_international, icon: 'fa-calendar-alt' },
     { number: '1000+', label: t.about_stat_daily_km, icon: 'fa-road' },
     { number: '3', label: t.about_stat_languages, icon: 'fa-globe' },
     { number: '10+', label: t.about_stat_it_projects, icon: 'fa-laptop-code' }

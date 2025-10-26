@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useLanguage } from '@/hooks/useLanguage'
 import { useTypingEffect } from '@/hooks/useTypingEffect'
 import AnimatedSection from '@/components/ui/AnimatedSection'
 import Button from '@/components/ui/Button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card'
+import BackgroundVideo from '@/components/ui/BackgroundVideo'
 import SEO, { pageConfigs } from '@/components/SEO'
 
 const HomePage = () => {
@@ -38,14 +39,23 @@ const HomePage = () => {
       <SEO {...pageConfigs.home} />
       <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center relative overflow-hidden tech-grid">
-        {/* Background Effects */}
-        <div className="absolute inset-0 pointer-events-none">
+      <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+        {/* Background Video - adaptacyjne ładowanie */}
+        <BackgroundVideo
+          desktopSrc="https://www.swizzonic.ch/img/SloMo_SwizzonicIntroLoopV3.mp4"
+          poster="https://www.swizzonic.ch/img/poster.jpg"
+          overlay={true}
+          overlayOpacity={0.7}
+          className="z-0"
+        />
+        
+        {/* Additional animated effects */}
+        <div className="absolute inset-0 pointer-events-none z-10">
           <div className="absolute top-20 left-20 w-72 h-72 bg-gold-500/10 rounded-full blur-3xl animate-pulse" />
           <div className="absolute bottom-20 right-20 w-96 h-96 bg-gold-600/5 rounded-full blur-3xl animate-pulse delay-700" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection animation="fade-in" delay={200}>
             {/* Main Title */}
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6">
@@ -120,7 +130,7 @@ const HomePage = () => {
           </AnimatedSection>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
+            {useMemo(() => [
               {
                 icon: 'fa-truck',
                 title: t.homepage_services.transport,
@@ -157,7 +167,7 @@ const HomePage = () => {
                 description: t.homepage_services.contact_desc,
                 link: '/contact'
               }
-            ].map((item, index) => (
+            ], [t]).map((item, index) => (
               <AnimatedSection
                 key={index}
                 animation="slide-up"

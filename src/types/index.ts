@@ -245,6 +245,7 @@ export interface Translation {
   about_value_partnership: string;
   about_value_partnership_desc: string;
   about_stat_years_switzerland: string;
+  about_stat_years_international: string;
   about_stat_daily_km: string;
   about_stat_languages: string;
   about_stat_it_projects: string;

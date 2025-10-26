@@ -1,4 +1,4 @@
-import { HTMLAttributes, ReactNode } from 'react'
+import { HTMLAttributes, ReactNode, memo } from 'react'
 import { cn } from '@/utils/cn'
 
 // Temporary type until class-variance-authority is installed
@@ -43,7 +43,7 @@ export interface CardProps
   hover?: 'none' | 'lift' | 'glow'
 }
 
-const Card = ({ className, variant, size, hover, children, ...props }: CardProps) => {
+const Card = memo(({ className, variant, size, hover, children, ...props }: CardProps) => {
   return (
     <div
       className={cardVariants({ variant, size, hover, className })}
@@ -52,37 +52,42 @@ const Card = ({ className, variant, size, hover, children, ...props }: CardProps
       {children}
     </div>
   )
-}
+})
 
-// Card sub-components
-const CardHeader = ({ className, children, ...props }: HTMLAttributes<HTMLDivElement>) => (
+// Card sub-components - optymalizowane z React.memo
+const CardHeader = memo(({ className, children, ...props }: HTMLAttributes<HTMLDivElement>) => (
   <div className={cn("mb-4", className)} {...props}>
     {children}
   </div>
-)
+))
+CardHeader.displayName = 'CardHeader'
 
-const CardTitle = ({ className, children, ...props }: HTMLAttributes<HTMLHeadingElement>) => (
+const CardTitle = memo(({ className, children, ...props }: HTMLAttributes<HTMLHeadingElement>) => (
   <h3 className={cn("text-xl font-bold text-white mb-2", className)} {...props}>
     {children}
   </h3>
-)
+))
+CardTitle.displayName = 'CardTitle'
 
-const CardDescription = ({ className, children, ...props }: HTMLAttributes<HTMLParagraphElement>) => (
+const CardDescription = memo(({ className, children, ...props }: HTMLAttributes<HTMLParagraphElement>) => (
   <p className={cn("text-gray-300", className)} {...props}>
     {children}
   </p>
-)
+))
+CardDescription.displayName = 'CardDescription'
 
-const CardContent = ({ className, children, ...props }: HTMLAttributes<HTMLDivElement>) => (
+const CardContent = memo(({ className, children, ...props }: HTMLAttributes<HTMLDivElement>) => (
   <div className={cn(className)} {...props}>
     {children}
   </div>
-)
+))
+CardContent.displayName = 'CardContent'
 
-const CardFooter = ({ className, children, ...props }: HTMLAttributes<HTMLDivElement>) => (
+const CardFooter = memo(({ className, children, ...props }: HTMLAttributes<HTMLDivElement>) => (
   <div className={cn("mt-6 flex items-center gap-4", className)} {...props}>
     {children}
   </div>
-)
+))
+CardFooter.displayName = 'CardFooter'
 
 export { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
